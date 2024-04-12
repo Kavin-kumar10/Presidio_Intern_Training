@@ -8,7 +8,10 @@ namespace FirstConsoleApplicaiton
 {
     internal class Authentication
     {
-        //Get User Data  
+        /// <summary>
+        /// Get User Data and Password 
+        /// </summary>
+        /// <returns></returns>
         static string getUsername()
         {
             Console.WriteLine("Enter User Name : ");
@@ -22,6 +25,10 @@ namespace FirstConsoleApplicaiton
             return Password;
         }
 
+        /// <summary>
+        /// Authenticate the username and password with 'ABC' and '123'
+        /// </summary>
+        /// <returns></returns>
         static bool Authenticate(){
             string username = getUsername();
             string password = getPassword();

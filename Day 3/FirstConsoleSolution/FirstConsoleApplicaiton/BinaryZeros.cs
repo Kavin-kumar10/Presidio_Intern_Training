@@ -8,7 +8,11 @@ namespace FirstConsoleApplicaiton
 {
     internal class BinaryZeros
     {
-        //Ongoing
+        /// <summary>
+        /// To find maximum consecutive zeros present in between 1 in the string got as parameter
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         static int maxConsecutiveZeros(string str)
         {
             int ind = 0;
