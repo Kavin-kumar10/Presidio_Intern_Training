@@ -83,6 +83,8 @@ namespace CompanyGovernmentRulesClasses
         /// </summary>
         public void PrintEmployeeDetails()
         {
+            Console.WriteLine("---------------------------------------------------------");
+            Console.WriteLine();
             Console.WriteLine("Company Name : "+CompanyName);
             Console.WriteLine("Name : " + Name);
             Console.WriteLine("Department : " + Department);
@@ -97,6 +99,9 @@ namespace CompanyGovernmentRulesClasses
             Console.WriteLine("Salary Deducted due to Extra leave : " + AmountDeductedDueToExtraLeave);
             Console.WriteLine("Allowed Leave Details : ");
             Console.WriteLine(LeaveDetails());
+            Console.WriteLine();
+            Console.WriteLine("---------------------------------------------------------");
+
         }
         public virtual double EmployeePF(double basicSalary)
         {
