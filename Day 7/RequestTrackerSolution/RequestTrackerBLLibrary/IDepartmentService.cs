@@ -1,0 +1,19 @@
+﻿using RequestTrackerModalClasses;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RequestTrackerBLLibrary
+{
+    public interface IDepartmentService
+    {
+        int AddDepartment(Department department);
+        Department ChangeDepartmentName(string departmentOldName, string departmentNewName);
+        Department GetDepartmentById(int id);
+        Department GetDepartmentByName(string departmentName);
+        string GetDepartmentHeadById(int departmentId);
+        List<Department> GetDepartmentList();
+    }
+}
