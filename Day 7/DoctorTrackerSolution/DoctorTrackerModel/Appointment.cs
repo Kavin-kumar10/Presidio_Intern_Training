@@ -32,13 +32,13 @@ namespace DoctorTrackerModel
             Id = id;
         }
 
-        public Appointment(int id, string diseaseName, string patientName, string status, string doctorHandling, DateTime appointmentDate)
+        public Appointment(int id, string diseaseName, int patientId, string status, int doctorId, DateTime appointmentDate)
         {
             Id = id;
             DiseaseName = diseaseName;
-            PatientId = patientName;
+            PatientId = patientId;
             Status = status;
-            DoctorId = doctorHandling;
+            DoctorId = doctorId;
             AppointmentDate = appointmentDate;
         }
 
