@@ -27,6 +27,7 @@ namespace LibraryManagementDALLibrary
         public Customer Add(Customer item)
         {
             if (_customer.ContainsKey(item.Id)) return null;
+            item.Id = GenerateId();
             _customer.Add(item.Id, item);
             return item;
             throw new NotImplementedException();

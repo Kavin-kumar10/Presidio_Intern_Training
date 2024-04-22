@@ -23,7 +23,7 @@ namespace LibraryManagementBLLibrary
             var result = _customerRepository.Add(item);
             if (result != null) { return result; }
             return null;
-            throw new NotImplementedException();
+            throw new DuplicateCustomerException();
         }
 
         public Customer DeleteCustomer(int id)

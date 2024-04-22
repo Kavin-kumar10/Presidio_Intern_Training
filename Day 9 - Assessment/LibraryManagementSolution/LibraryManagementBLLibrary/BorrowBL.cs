@@ -1,5 +1,6 @@
 ﻿using LibraryManagementDALLibrary;
 using LibraryManagmentModals;
+using ErrorhandlingExceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,17 @@ namespace LibraryManagementBLLibrary
             }
             return null;
             throw new NotImplementedException();
+        }
+
+        public Borrow GetBorrowWithIds(int CustomerId,int BookId)
+        {
+            List<Borrow> borrows = GetAllBorrows();
+            foreach(Borrow b in borrows)
+            {
+                if (b.CustomerId == CustomerId && b.BookId == BookId)
+                    return b;
+            }
+            throw new CannotFindTheObjectException();
         }
     }
 }

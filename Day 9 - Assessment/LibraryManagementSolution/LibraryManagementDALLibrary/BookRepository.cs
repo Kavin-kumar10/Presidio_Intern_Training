@@ -13,7 +13,7 @@ namespace LibraryManagementDALLibrary
 
         public int GenerateId()
         {
-            if (_books.Count == 0) return 0;
+            if (_books.Count == 0) return 1;
             int max = _books.Keys.Max();
             return ++max;
         }
@@ -21,6 +21,7 @@ namespace LibraryManagementDALLibrary
         public Book Add(Book item)
         {
             if (_books.ContainsKey(item.Id)) return null;
+            item.Id = GenerateId();
             _books.Add(item.Id, item);
             return item;
             throw new NotImplementedException();

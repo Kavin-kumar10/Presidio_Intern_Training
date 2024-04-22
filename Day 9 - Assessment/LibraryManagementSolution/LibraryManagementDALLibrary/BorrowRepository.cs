@@ -26,6 +26,7 @@ namespace LibraryManagementDALLibrary
         public Borrow Add(Borrow item)
         {
             if (_borrows.ContainsKey(item.Id)) return null;
+            item.Id = GenerateId();
             _borrows.Add(item.Id, item);
             return item;
             throw new NotImplementedException();

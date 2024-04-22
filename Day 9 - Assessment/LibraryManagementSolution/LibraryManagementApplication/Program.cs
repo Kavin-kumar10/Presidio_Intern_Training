@@ -10,7 +10,6 @@ namespace LibraryManagementApplication
         BookBL bookBL = new BookBL();
         CustomerBL customerBL = new CustomerBL();
         BorrowBL borrowBL = new BorrowBL();
-        static int id = 0;      
 
         /// <summary>
         /// Menu Bars 
@@ -56,7 +55,7 @@ namespace LibraryManagementApplication
                     MenuSelector();
                     break;
                 case 1:
-                    CreateNewCustomer(id);
+                    CreateNewCustomer();
                     break;
                 case 2:
                     BorrowBookByCustomer();
@@ -99,7 +98,7 @@ namespace LibraryManagementApplication
                 case 3:
                     PrintAllCustomers();
                     AdminMenu();
-                    break
+                    break;
 
                 default:
                     Console.WriteLine("Invalid Response. Please Try Again : ");
@@ -149,10 +148,10 @@ namespace LibraryManagementApplication
             }
         }
 
-        public void CreateNewCustomer(int id)
+        public void CreateNewCustomer()
         {
             Customer customer = GetCustomerFromTheConsole();
-            customer.Id = id++;
+            customer.Id = 1;
             customerBL.AddCustomer(customer);
             Console.WriteLine(customer.ToString());
             CustomerMenu();
@@ -207,13 +206,14 @@ namespace LibraryManagementApplication
 
         public void ReturnBookByCustomer()
         {
-            Borrow borrow = new Borrow();
+            Borrow borrowTemp = new Borrow();
             Console.WriteLine("Enter Customer Id : ");
             int customerId = Convert.ToInt32(Console.ReadLine());
-            borrow.CustomerId = customerId;
+            borrowTemp.CustomerId = customerId;
             Console.WriteLine("Enter Book Id : ");
             int bookId = Convert.ToInt32(Console.ReadLine());
-            borrow.BookId = bookId;
+            borrowTemp.BookId = bookId;
+            Borrow borrow = borrowBL.GetBorrowWithIds(borrowTemp.CustomerId, borrowTemp.BookId);
             borrow.ReturnDate = DateTime.Now;
             borrow.Status = "Returned";
             borrowBL.UpdateBorrow(borrow);
