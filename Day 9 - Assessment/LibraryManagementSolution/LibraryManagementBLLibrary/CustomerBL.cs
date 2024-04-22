@@ -41,7 +41,7 @@ namespace LibraryManagementBLLibrary
             throw new NotImplementedException();
         }
 
-        public List<Book> GetCustomerBooksWithId(int id)
+        public List<int> GetCustomerBooksWithId(int id)
         {
             var result = _customerRepository.Get(id);
             if (result != null) { return result.BooksTaken; }
@@ -61,6 +61,31 @@ namespace LibraryManagementBLLibrary
             if (customer != null) { customer = item; }
             return customer;
             throw new NotImplementedException();
+        }
+
+        public Customer AddBookToCustomer(int CustomerId, int BookId)
+        {
+            List<Customer> customers = _customerRepository.GetAll();
+            foreach (var customer in customers) { if(customer.Id == CustomerId)
+                {
+                    customer.BooksTaken.Add(BookId);
+                    return customer;
+                } 
+            }
+            throw new CannotFindTheObjectException();
+        }
+        public Customer RemoveBookToCustomer(int CustomerId, int BookId)
+        {
+            List<Customer> customers = _customerRepository.GetAll();
+            foreach (var customer in customers)
+            {
+                if (customer.Id == CustomerId)
+                {
+                    customer.BooksTaken.Remove(BookId);
+                    return customer;
+                }
+            }
+            throw new CannotFindTheObjectException();
         }
     }
 }

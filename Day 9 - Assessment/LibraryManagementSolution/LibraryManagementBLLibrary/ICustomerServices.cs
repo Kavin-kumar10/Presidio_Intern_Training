@@ -15,6 +15,6 @@ namespace LibraryManagementBLLibrary
         Customer DeleteCustomer(int id);
         Customer GetCustomerById(int id);
         Customer UpdateCustomer(Customer item);
-        List<Book> GetCustomerBooksWithId(int id);
+        List<int> GetCustomerBooksWithId(int id);
     }
 }

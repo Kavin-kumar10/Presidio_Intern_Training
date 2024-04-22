@@ -13,7 +13,6 @@ namespace LibraryManagementBLLibrary
         }
         public Book AddBook(Book item)
         {
-
             var result = _bookRepository.Add(item); 
             if(result != null)
             {
@@ -24,7 +23,7 @@ namespace LibraryManagementBLLibrary
 
         public Book DeleteBook(int id)
         {
-         
+          
             var book = _bookRepository.Get(id);
             if(book != null) { _bookRepository.Delete(id); }
             throw new CannotFindTheObjectException();

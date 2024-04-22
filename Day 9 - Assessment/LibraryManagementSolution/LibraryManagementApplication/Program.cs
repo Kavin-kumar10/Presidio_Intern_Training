@@ -1,6 +1,7 @@
 ﻿using LibraryManagementBLLibrary;
 using LibraryManagementModals;
 using LibraryManagmentModals;
+using System.Net;
 
 namespace LibraryManagementApplication
 {
@@ -9,6 +10,7 @@ namespace LibraryManagementApplication
         BookBL bookBL = new BookBL();
         CustomerBL customerBL = new CustomerBL();
         BorrowBL borrowBL = new BorrowBL();
+        
 
         /// <summary>
         /// Menu Bars 
@@ -55,12 +57,13 @@ namespace LibraryManagementApplication
                     break;
                 case 1:
                     CreateNewCustomer();
+
                     break;
                 case 2:
-
+                    BorrowBookByCustomer();
                     break;
                 case 3:
-
+                    ReturnBookByCustomer();
                     break;
                 case 4:
                     PrintAllbooks();
@@ -74,6 +77,7 @@ namespace LibraryManagementApplication
             Console.WriteLine("Select the Function Module:");
             Console.WriteLine("1. Get All Book Details.");
             Console.WriteLine("2. Add New Books to the Store");
+            Console.WriteLine("3. Get All the Customers.");
             Console.WriteLine("0  Exit");
 
             int response = int.Parse(Console.ReadLine());
@@ -83,19 +87,18 @@ namespace LibraryManagementApplication
                     MenuSelector();
                     break;
                 case 1:
-                    List<Book> books = GetAllBooks();
-                    for (int i = 0; i < books.Count; i++)
-                    {
-                        Console.WriteLine(books[i].ToString());
-                    }
+                    PrintAllbooks();
                     AdminMenu();
                     break;
                 case 2:
                     Book newBook = Book.GetBookDataFromTheConsole();
                     var result = bookBL.AddBook(newBook);
                     Console.WriteLine();
-                    Console.WriteLine("After Added");
                     Console.WriteLine(result.ToString());
+                    AdminMenu();
+                    break;
+                case 3:
+                    PrintAllCustomers();
                     AdminMenu();
                     break;
                 default:
@@ -122,8 +125,25 @@ namespace LibraryManagementApplication
             List<Book> AllBooks = GetAllBooks();
             foreach (Book book in AllBooks)
             {
-                Console.WriteLine();
+                Console.WriteLine("--------------------------------------------------------------");
                 Console.WriteLine(book.ToString());
+                Console.WriteLine("--------------------------------------------------------------");
+            }
+        }
+        public List<Customer> GetAllCustomers()
+        {
+            List<Customer> customers = customerBL.GetAllCustomers();
+            return customers;
+        }
+
+        public void PrintAllCustomers()
+        {
+            List<Customer> AllCustomers = GetAllCustomers();
+            foreach (Customer Customer in AllCustomers)
+            {
+                Console.WriteLine("--------------------------------------------------------------");
+                Console.WriteLine(Customer.ToString());
+                Console.WriteLine("--------------------------------------------------------------");
             }
         }
 
@@ -132,13 +152,40 @@ namespace LibraryManagementApplication
             Customer customer = new Customer();
             customer.GetCustomerFromTheConsole();
             customerBL.AddCustomer(customer);
+            Console.WriteLine(customer.ToString());
+            CustomerMenu();
         }
+
 
         public void BorrowBookByCustomer()
         {
-            Borrow borrow = new Borrow();
-            borrow.BorrowDetailsFromTheConsole();
+            Borrow borrow = new Borrow(); Console.WriteLine("Enter your Customer Id: ");
+            int CustomerId = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter your BookId");
+            int BookId = Convert.ToInt32(Console.ReadLine());
+            borrow.BorrowDetailsFromTheConsole(CustomerId,BookId);
             borrowBL.AddBorrow(borrow);
+            Customer customer = customerBL.AddBookToCustomer(CustomerId,BookId);
+            Console.WriteLine(customer.ToString());
+            CustomerMenu();
+        }
+
+        public void ReturnBookByCustomer()
+        {
+            Borrow borrow = new Borrow();
+            Console.WriteLine("Enter Customer Id : ");
+            int customerId = Convert.ToInt32(Console.ReadLine());
+            borrow.CustomerId = customerId;
+            Console.WriteLine("Enter Book Id : ");
+            int bookId = Convert.ToInt32(Console.ReadLine());
+            borrow.BookId = bookId;
+            borrow.ReturnDate = DateTime.Now;
+            borrow.Status = "Returned";
+            borrowBL.UpdateBorrow(borrow);
+            borrow.ToString();
+            Customer customer = customerBL.RemoveBookToCustomer(customerId, bookId);
+            Console.WriteLine(customer.ToString());
+            CustomerMenu();
         }
 
         static void Main(string[] args)

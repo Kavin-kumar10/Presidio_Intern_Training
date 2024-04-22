@@ -37,23 +37,23 @@ namespace LibraryManagmentModals
             Status = status;
         }
 
-        public void BorrowDetailsFromTheConsole()
+        public Borrow BorrowDetailsFromTheConsole(int customerId,int bookId)
         {
-            Console.WriteLine("Enter your Customer Id: ");
-            CustomerId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("Enter your BookId");
-            BookId = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("1. Return 2. Borrow ");
-            int response = Convert.ToInt32(Console.ReadLine());
-            if(response == 1) { 
-                Status = "Returned";
-                ReturnDate = DateTime.Now;
-            }
-            else if(response == 2) { 
-                Status = "Borrowed";
-                BorrowedDate = DateTime.Now;
-            }
-            else Console.WriteLine("Invalid Response");
+            Borrow borrow = new Borrow();
+            borrow.CustomerId = customerId;
+            borrow.BookId = bookId;
+            borrow.Status = "Borrowed";
+            borrow.BorrowedDate = DateTime.Now;
+            return borrow;
+        }
+
+        public override string ToString()
+        {
+            return $"The Customer Id : {CustomerId}" +
+                   $"The Book Id : {BookId}" +
+                   $"The Borrowed Date : {BorrowedDate}" +
+                   $"Status:{Status}" +
+                   $"The Return Date : {ReturnDate}";
         }
 
         public bool Equals(Borrow? other)

@@ -12,13 +12,13 @@ namespace LibraryManagementModals
         public int Id { get; set; }
         public string Name { get; set; }   
         public DateTime Dob {  get; set; }
-        public List<Book> BooksTaken { get; set; }
+        public List<int> BooksTaken { get; set; }
 
         public Customer() {
             Id = 0;
             Name = string.Empty;
             Dob = DateTime.Now;
-            BooksTaken = new List<Book>();
+            BooksTaken = new List<int>();
         }
 
         public Customer(int id)
@@ -26,7 +26,7 @@ namespace LibraryManagementModals
             Id = id;
         }
 
-        public Customer(int id, string name, DateTime dob, List<Book> booksTaken)
+        public Customer(int id, string name, DateTime dob, List<int> booksTaken)
         {
             Id = id;
             Name = name;
@@ -38,10 +38,10 @@ namespace LibraryManagementModals
         {
             Customer customer = new Customer();
             Console.WriteLine("Enter Your Name : ");
-            customer.Id = Convert.ToInt32(Console.ReadLine());
+            customer.Name = Console.ReadLine();
             Console.WriteLine("Enter Your Date of Birth : ");
             customer.Dob = DateTime.Parse(Console.ReadLine());
-            customer.BooksTaken = new List<Book>();
+            customer.BooksTaken = new List<int>();
             return customer;
         }
 
@@ -50,9 +50,9 @@ namespace LibraryManagementModals
             return $"Customer ID: {Id}\n" +
                    $"Customer Name: {Name}\n" +
                    $"Date of Birth: {Dob:yyyy-MM-dd}\n" + 
-                   $"Books Taken: {BooksTaken.Count} (Details not shown here)";
+                   $"Books Taken Count: {BooksTaken.Count} \n"+
+                   $"Books taken: \n"+
+                   $"{string.Join(",",BooksTaken)}";
         }
-
-
     }
 }
