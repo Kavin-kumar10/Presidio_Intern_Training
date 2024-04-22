@@ -52,7 +52,7 @@
             Console.WriteLine("Enter Book Genre:");
             book.Genre = Console.ReadLine();
 
-            Console.WriteLine("Enter Book Publication Date (YYYY-MM-DD):");
+            Console.WriteLine("Enter Book Publication Date:");
             book.PublicationDate = DateTime.Parse(Console.ReadLine());
 
             Console.WriteLine("Enter Book Count:");
