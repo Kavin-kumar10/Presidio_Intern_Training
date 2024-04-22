@@ -111,7 +111,6 @@ namespace LibraryManagementApplication
         /// <summary>
         /// Methods to be utilized
         /// </summary>
-        /// <returns></returns>
 
         public List<Book> GetAllBooks()
         {
