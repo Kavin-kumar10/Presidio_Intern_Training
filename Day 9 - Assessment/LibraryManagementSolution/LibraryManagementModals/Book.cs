@@ -38,7 +38,7 @@
 
         public static Book GetBookDataFromTheConsole()
         {
-            var book = new Book();
+            Book book = new Book();
 
             Console.WriteLine("Enter Book ID:");
             book.Id = int.Parse(Console.ReadLine());
@@ -62,6 +62,18 @@
             book.Status = Console.ReadLine();
 
             return book;
+        }
+
+        public override string ToString()
+        {
+            return $"Book ID: {Id}\n" +
+               $"Book Title: {Title}\n" +
+               $"Author: {Author}\n" +
+               $"Genre: {Genre}\n" +
+               $"Publication Date: {PublicationDate:yyyy-MM-dd}\n" +
+               $"Count: {Count}\n" +
+               $"Status: {Status}";
+
         }
     }
 }

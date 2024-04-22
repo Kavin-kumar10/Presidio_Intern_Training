@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementBLLibrary"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibraryManagementModals", "LibraryManagementModals\LibraryManagementModals.csproj", "{BB9CA873-049A-433E-B1B9-A1F8730FA262}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorhandlingExceptions", "ErrorhandlingExceptions\ErrorhandlingExceptions.csproj", "{369E9D23-E128-4036-AFCC-40C95569A169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{BB9CA873-049A-433E-B1B9-A1F8730FA262}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB9CA873-049A-433E-B1B9-A1F8730FA262}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB9CA873-049A-433E-B1B9-A1F8730FA262}.Release|Any CPU.Build.0 = Release|Any CPU
+		{369E9D23-E128-4036-AFCC-40C95569A169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{369E9D23-E128-4036-AFCC-40C95569A169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{369E9D23-E128-4036-AFCC-40C95569A169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{369E9D23-E128-4036-AFCC-40C95569A169}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

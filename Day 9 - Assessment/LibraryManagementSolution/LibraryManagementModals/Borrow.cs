@@ -9,7 +9,7 @@ namespace LibraryManagmentModals
     public class Borrow : IEquatable<Borrow>
     {
         public int Id { get; set; }
-        public int CustomerName { get; set; }
+        public int CustomerId { get; set; }
         public int BookId { get; set; }
         public DateTime BorrowedDate { get; set; }
         public DateTime ReturnDate { get; set; }
@@ -18,12 +18,11 @@ namespace LibraryManagmentModals
         public Borrow(int id) {
             Id = id;
         }
-        public Borrow(int id, int customerName, int bookId, DateTime borrowedDate, DateTime returnDate, string status) : this(id)
+        public Borrow(int id, int customerId, int bookId, string status) : this(id)
         {
-            CustomerName = customerName;
+            CustomerId = customerId;
             BookId = bookId;
-            BorrowedDate = borrowedDate;
-            ReturnDate = returnDate;
+            BorrowedDate = new DateTime();
             Status = status;
         }
 

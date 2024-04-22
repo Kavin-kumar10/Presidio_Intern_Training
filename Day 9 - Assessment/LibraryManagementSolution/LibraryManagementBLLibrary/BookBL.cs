@@ -1,5 +1,6 @@
 ﻿using LibraryManagementDALLibrary;
 using LibraryManagmentModals;
+using ErrorhandlingExceptions;
 
 namespace LibraryManagementBLLibrary
 {
@@ -12,14 +13,13 @@ namespace LibraryManagementBLLibrary
         }
         public Book AddBook(Book item)
         {
+
             var result = _bookRepository.Add(item); 
             if(result != null)
             {
-                Console.WriteLine(result);
                 return result;
             }
-            return null;
-            throw new NotImplementedException();
+            throw new DuplicateBookException();
         }
 
         public Book DeleteBook(int id)
@@ -27,8 +27,7 @@ namespace LibraryManagementBLLibrary
          
             var book = _bookRepository.Get(id);
             if(book != null) { _bookRepository.Delete(id); }
-            return null;
-            throw new NotImplementedException();
+            throw new CannotFindTheObjectException();
         }
 
         public List<Book> GetAllBooks()
@@ -43,8 +42,7 @@ namespace LibraryManagementBLLibrary
         {
             var result = _bookRepository.Get(id);
             if(result != null) { return result;}
-            return null;
-            throw new NotImplementedException();
+            throw new CannotFindTheObjectException();
         }
 
         public Book UpdateBook(Book item)

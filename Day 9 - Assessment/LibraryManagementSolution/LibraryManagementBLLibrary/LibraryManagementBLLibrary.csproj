@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ErrorhandlingExceptions\ErrorhandlingExceptions.csproj" />
     <ProjectReference Include="..\LibraryManagementDALLibrary\LibraryManagementDALLibrary.csproj" />
     <ProjectReference Include="..\LibraryManagementModals\LibraryManagementModals.csproj" />
   </ItemGroup>
