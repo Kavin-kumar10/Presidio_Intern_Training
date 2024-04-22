@@ -10,7 +10,7 @@ namespace LibraryManagementApplication
         BookBL bookBL = new BookBL();
         CustomerBL customerBL = new CustomerBL();
         BorrowBL borrowBL = new BorrowBL();
-        
+        static int id = 0;      
 
         /// <summary>
         /// Menu Bars 
@@ -56,8 +56,7 @@ namespace LibraryManagementApplication
                     MenuSelector();
                     break;
                 case 1:
-                    CreateNewCustomer();
-
+                    CreateNewCustomer(id);
                     break;
                 case 2:
                     BorrowBookByCustomer();
@@ -100,7 +99,8 @@ namespace LibraryManagementApplication
                 case 3:
                     PrintAllCustomers();
                     AdminMenu();
-                    break;
+                    break
+
                 default:
                     Console.WriteLine("Invalid Response. Please Try Again : ");
                     AdminMenu();
@@ -130,6 +130,8 @@ namespace LibraryManagementApplication
                 Console.WriteLine("--------------------------------------------------------------");
             }
         }
+
+        // Customer Related Methods
         public List<Customer> GetAllCustomers()
         {
             List<Customer> customers = customerBL.GetAllCustomers();
@@ -147,15 +149,48 @@ namespace LibraryManagementApplication
             }
         }
 
-        public void CreateNewCustomer()
+        public void CreateNewCustomer(int id)
         {
-            Customer customer = new Customer();
-            customer.GetCustomerFromTheConsole();
+            Customer customer = GetCustomerFromTheConsole();
+            customer.Id = id++;
             customerBL.AddCustomer(customer);
             Console.WriteLine(customer.ToString());
             CustomerMenu();
         }
 
+        public Customer GetCustomerFromTheConsole()
+        {
+            Customer customer = new Customer();
+            Console.WriteLine("Enter Your Name : ");
+            customer.Name = Console.ReadLine();
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Enter Your Date of Birth (YYYY-MM-DD): ");
+                    customer.Dob = DateTime.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("Invalid date format. Please try again:");
+                }
+            }
+            customer.BooksTaken = new List<int>();
+            return customer;
+        }
+
+        //Borrow related
+
+        public Borrow BorrowDetailsFromTheConsole(int customerId, int bookId)
+        {
+            Borrow borrow = new Borrow();
+            borrow.CustomerId = customerId;
+            borrow.BookId = bookId;
+            borrow.Status = "Borrowed";
+            borrow.BorrowedDate = DateTime.Now;
+            return borrow;
+        }
 
         public void BorrowBookByCustomer()
         {

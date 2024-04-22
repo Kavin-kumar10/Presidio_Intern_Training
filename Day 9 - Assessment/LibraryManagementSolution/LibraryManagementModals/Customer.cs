@@ -34,16 +34,7 @@ namespace LibraryManagementModals
             BooksTaken = booksTaken;
         }
 
-        public Customer GetCustomerFromTheConsole()
-        {
-            Customer customer = new Customer();
-            Console.WriteLine("Enter Your Name : ");
-            customer.Name = Console.ReadLine();
-            Console.WriteLine("Enter Your Date of Birth : ");
-            customer.Dob = DateTime.Parse(Console.ReadLine());
-            customer.BooksTaken = new List<int>();
-            return customer;
-        }
+        
 
         public override string ToString()
         {
