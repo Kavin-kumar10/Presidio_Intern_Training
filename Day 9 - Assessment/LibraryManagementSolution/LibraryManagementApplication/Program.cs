@@ -1,4 +1,5 @@
 ﻿using LibraryManagementBLLibrary;
+using LibraryManagementModals;
 using LibraryManagmentModals;
 
 namespace LibraryManagementApplication
@@ -6,21 +7,13 @@ namespace LibraryManagementApplication
     internal class Program
     {
         BookBL bookBL = new BookBL();
-        public List<Book> GetAllBooks()
-        {
-            List<Book> AllBooks = bookBL.GetAllBooks();
-            return AllBooks;
-        }
+        CustomerBL customerBL = new CustomerBL();
+        BorrowBL borrowBL = new BorrowBL();
 
-        public void PrintAllbooks()
-        {
-            List<Book> AllBooks = GetAllBooks();
-            foreach (Book book in AllBooks)
-            {
-                Console.WriteLine();
-                Console.WriteLine(book.ToString());
-            }
-        }
+        /// <summary>
+        /// Menu Bars 
+        /// </summary>
+        /// <returns></returns>
 
         public void MenuSelector()
         {
@@ -43,7 +36,7 @@ namespace LibraryManagementApplication
                 Console.WriteLine("Invalid Module Selection. Please Try again : ");
                 MenuSelector();
             }
-            
+
         }
 
         public void CustomerMenu()
@@ -61,12 +54,13 @@ namespace LibraryManagementApplication
                     MenuSelector();
                     break;
                 case 1:
-                    
+                    CreateNewCustomer();
                     break;
                 case 2:
 
                     break;
                 case 3:
+
                     break;
                 case 4:
                     PrintAllbooks();
@@ -110,6 +104,43 @@ namespace LibraryManagementApplication
                     break;
             }
         }
+
+
+        /// <summary>
+        /// Methods to be utilized
+        /// </summary>
+        /// <returns></returns>
+
+        public List<Book> GetAllBooks()
+        {
+            List<Book> AllBooks = bookBL.GetAllBooks();
+            return AllBooks;
+        }
+
+        public void PrintAllbooks()
+        {
+            List<Book> AllBooks = GetAllBooks();
+            foreach (Book book in AllBooks)
+            {
+                Console.WriteLine();
+                Console.WriteLine(book.ToString());
+            }
+        }
+
+        public void CreateNewCustomer()
+        {
+            Customer customer = new Customer();
+            customer.GetCustomerFromTheConsole();
+            customerBL.AddCustomer(customer);
+        }
+
+        public void BorrowBookByCustomer()
+        {
+            Borrow borrow = new Borrow();
+            borrow.BorrowDetailsFromTheConsole();
+            borrowBL.AddBorrow(borrow);
+        }
+
         static void Main(string[] args)
         {
             Program program = new Program();
@@ -119,7 +150,6 @@ namespace LibraryManagementApplication
             Book book2 = new Book(124, "Harry potter", "Masasi kishimato", "Fictional", new DateTime(1899, 11, 10), 20, "Available");
             program.bookBL.AddBook(book1);
             program.bookBL.AddBook(book2);
-
 
             program.MenuSelector();
 

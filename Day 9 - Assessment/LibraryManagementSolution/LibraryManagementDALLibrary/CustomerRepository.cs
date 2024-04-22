@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LibraryManagementDALLibrary
 {
-    public class CustomerRepository
+    public class CustomerRepository : IRepository<int,Customer>
     {
         readonly Dictionary<int, Customer> _customer;
 
