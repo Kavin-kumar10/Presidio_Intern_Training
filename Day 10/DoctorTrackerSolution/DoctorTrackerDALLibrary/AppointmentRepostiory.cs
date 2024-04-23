@@ -64,18 +64,5 @@ namespace DoctorTrackerDALLibrary
             }
             return null;
         }
-
-        public Appointment GetAppointmentByDoctorIdAndPatientId(int DoctorId, int PatientId)
-        {
-            List<Appointment> AllAppointment =  GetAll();
-            for (int i = 0; i < AllAppointment.Count; i++)
-            {
-                if (AllAppointment[i].PatientId == PatientId && AllAppointment[i].DoctorId == DoctorId)
-                {
-                    return AllAppointment[i];
-                }
-            }
-            return null;
-        }
     }
 }
