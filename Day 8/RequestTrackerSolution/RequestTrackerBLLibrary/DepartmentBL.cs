@@ -1,4 +1,5 @@
 ﻿using RequestTrackerDALLibrary;
+using RequestTrackerExepctions;
 using RequestTrackerModalClasses;
 using System;
 using System.Collections.Generic;
@@ -11,9 +12,11 @@ namespace RequestTrackerBLLibrary
     public class DepartmentBL: IDepartmentService
     {
         readonly IRepository<int, Department> _departmentRepository;
-        public DepartmentBL()
+
+        public DepartmentBL(IRepository<int, Department> departmentRepository)
         {
-            _departmentRepository = new DepartmentRepository();
+            //_departmentRepository = new DepartmentRepository();//Tight coupling
+            _departmentRepository = departmentRepository;//Loose coupling
         }
 
         public int AddDepartment(Department department)
@@ -62,18 +65,11 @@ namespace RequestTrackerBLLibrary
 
         public Department GetDepartmentByName(string departmentName)
         {
-            List<Department> AllDepartment = _departmentRepository.GetAll();
-            if (AllDepartment != null)
-            {
-                for (int i = 0; i < AllDepartment.Count; i++)
-                {
-                    if (AllDepartment[i].Name == departmentName)
-                    {
-                        return AllDepartment[i];
-                    }
-                }
-            }
-            throw new NotImplementedException();
+            var departments = _departmentRepository.GetAll();
+            for (int i = 0; i < departments.Count; i++)
+                if (departments[i].Name == departmentName)
+                    return departments[i];
+            throw new DepartmentNotFoundException();
         }
 
         public string GetDepartmentHeadById(int departmentId)

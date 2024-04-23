@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DoctorTrackerBLLibrary
 {
-    public class NurseBL : INurse
+    public interface INurse
     {
 
     }

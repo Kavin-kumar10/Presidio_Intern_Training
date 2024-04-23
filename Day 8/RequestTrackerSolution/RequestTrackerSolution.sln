@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestTrackerDALLibrary", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestTrackerBLLibrary", "RequestTrackerBLLibrary\RequestTrackerBLLibrary.csproj", "{E25B6FAC-B9AB-4CE9-962D-944D76648106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestTrackerExepctions", "RequestTrackerExepctions\RequestTrackerExepctions.csproj", "{96693FE4-BBC2-40F4-9249-69C3AEF2E6BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RequestTrackerExepctions", "RequestTrackerExepctions\RequestTrackerExepctions.csproj", "{96693FE4-BBC2-40F4-9249-69C3AEF2E6BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RequestTrackerTest", "RequestTrackerTest\RequestTrackerTest.csproj", "{8EE8C4D6-5CAD-471A-B5F3-646EFB574B52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{96693FE4-BBC2-40F4-9249-69C3AEF2E6BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{96693FE4-BBC2-40F4-9249-69C3AEF2E6BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{96693FE4-BBC2-40F4-9249-69C3AEF2E6BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EE8C4D6-5CAD-471A-B5F3-646EFB574B52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EE8C4D6-5CAD-471A-B5F3-646EFB574B52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EE8C4D6-5CAD-471A-B5F3-646EFB574B52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EE8C4D6-5CAD-471A-B5F3-646EFB574B52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

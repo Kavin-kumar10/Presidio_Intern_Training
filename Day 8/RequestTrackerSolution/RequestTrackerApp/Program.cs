@@ -1,4 +1,5 @@
 ﻿using RequestTrackerBLLibrary;
+using RequestTrackerDALLibrary;
 using RequestTrackerModalClasses;
 using System.Collections;
 
@@ -8,8 +9,8 @@ namespace RequestTrackerApp
     {
         static void Main(string[] args)
         {
-            Department department = new Department(123,"IT","kavin");
-            DepartmentBL departmentBL = new DepartmentBL();
+            Department department = new Department("IT","kavin");
+            Department departmentBL = new DepartmentBL(new DepartmentRepository());
             Console.WriteLine(departmentBL.AddDepartment(department));
             Employee emp1 = new Employee(123, "kavin", new DateTime(2002, 11, 10), "Employee");
             Employee emp2 = new Employee(123, "kavin", new DateTime(2002, 11, 10), "Employee");

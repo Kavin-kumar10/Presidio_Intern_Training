@@ -11,11 +11,14 @@ namespace RequestTrackerModalClasses
         public int Id { get; set; }
         public string Name { get; set; }
         public string Department_Head { get; set; }
-        public Department(int id, string name, string department_Head)
+        public Department(string name, string department_Head)
         {
-            Id = id;
             Name = name;
             Department_Head = department_Head;
+        }
+
+        public Department()
+        {
         }
 
         public override bool Equals(object? obj)
