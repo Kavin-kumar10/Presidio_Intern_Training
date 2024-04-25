@@ -24,7 +24,12 @@ namespace DoctorTrackerModel
 
         public Appointment()
         {
-            Appointment appointment = new Appointment();
+            Id = 0;
+            DiseaseName = string.Empty;
+            PatientId = 0;
+            Status = string.Empty;
+            DoctorId = 0;
+            AppointmentDate = DateTime.Now;
         }
 
         public Appointment(int id)

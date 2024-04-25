@@ -17,7 +17,7 @@ namespace DoctorTrackerDALLibrary
 
         public int GenerateId()
         {
-            if (_appointment.Count == 0) return 0;
+            if (_appointment.Count == 0) return 1;
             int id = _appointment.Keys.Max();
             return ++id;
         }
@@ -28,7 +28,8 @@ namespace DoctorTrackerDALLibrary
             {
                 return null;
             }
-            _appointment.Add(GenerateId(), item);
+            item.Id = GenerateId();
+            _appointment.Add(item.Id, item);
             return item;
         }
 

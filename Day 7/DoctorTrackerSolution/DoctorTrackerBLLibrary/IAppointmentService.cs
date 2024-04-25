@@ -14,7 +14,7 @@ namespace DoctorTrackerBLLibrary
         int AddAppointment(Appointment appointment);
         Appointment UpdateAppointment(Appointment appointment);
         Appointment DeleteAppointment(int Id);
-        public Appointment GetAppointmentByAppointmentIdAndPatientId(int DoctorId, int PatientId);
+        Appointment GetAppointmentByAppointmentIdAndPatientId(int DoctorId, int PatientId);
 
     }
 }

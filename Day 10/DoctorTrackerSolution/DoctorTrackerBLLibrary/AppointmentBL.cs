@@ -61,7 +61,7 @@ namespace DoctorTrackerBLLibrary
                     return AllAppointment[i];
                 }
             }
-            return null;
+            throw new ItemNotFoundException();
         }
     }
 }

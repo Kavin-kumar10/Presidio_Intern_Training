@@ -17,7 +17,7 @@ namespace DoctorTrackerDALLibrary
 
         public int GenerateId()
         {
-            if (_Patient.Count == 0) return 0;
+            if (_Patient.Count == 0) return 1;
             int id = _Patient.Keys.Max();
             return ++id;
         }

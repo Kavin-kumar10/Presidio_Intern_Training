@@ -19,19 +19,18 @@ namespace DoctorTrackerTest
         public void Setup()
         {
             _patientrepository = new PatientRepository();
-            Patient Patient = new Patient() { Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002,11,10), Address = "Theni" };
-            _patientrepository.Add(Patient);
+            Patient patient = new Patient() { Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002,11,10), Address = "Theni",MobileNumber = "9876543210"};
+            _patientrepository.Add(patient);
             _patientservices = new PatientBL(_patientrepository);
         }
 
         //AddPatient
 
         [Test]
-        [TestCase(2, "pravin", 50, 10, "Ortho", "Pharmacy")]
-        public void AddPatientPass(int id, string name, int age, int experience, string speciality, string qualification)
+        public void AddPatientPass()
         {
-            Patient Patient = new Patient() { Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni" };
-            var result = _patientservices.AddPatient(Patient);
+            Patient patient = new Patient() {Id = 2, Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni", MobileNumber = "987654378" };
+            var result = _patientservices.AddPatient(patient);
             Assert.AreEqual(2, result);
         }
 
@@ -39,9 +38,9 @@ namespace DoctorTrackerTest
         public void AddPatientException()
         {
             //Arrange
-            Patient Patient = new Patient() {Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni" };
+            Patient patient = new Patient() {Id = 1, Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni", MobileNumber = "987654378" };
             //Action
-            var exception = Assert.Throws<DuplicateItemException>(() => _patientservices.AddPatient(Patient));
+            var exception = Assert.Throws<DuplicateItemException>(() => _patientservices.AddPatient(patient));
             //Assert
             Assert.AreEqual("The Item with current Credentials is Already Found", exception.Message);
         }
@@ -101,7 +100,7 @@ namespace DoctorTrackerTest
         public void UpdatePatientPass()
         {
             //Arrange
-            Patient Patient = new Patient() {Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni" };
+            Patient Patient = new Patient() {Id = 1,Name = "kavin", Age = 40, DiseaseName = "Anemia", DateOfBirth = new DateTime(2002, 11, 10), Address = "Theni" };
             //Action
             var result = _patientservices.UpdatePatient(Patient);
             //Assert

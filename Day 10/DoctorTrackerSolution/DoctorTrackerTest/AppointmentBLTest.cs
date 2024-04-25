@@ -19,8 +19,8 @@ namespace DoctorTrackerTest
         public void Setup()
         {
             _apppointmentrepository = new AppointmentRepository();
-            Appointment Appointment = new Appointment() {DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(10, 11, 2000), Status = "Scheduled" };
-            _apppointmentrepository.Add(Appointment);
+            Appointment appointment = new Appointment() {DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(2000, 11, 10), Status = "Scheduled" };
+            _apppointmentrepository.Add(appointment);
             _Appointmentservices = new AppointmentBL(_apppointmentrepository);
         }
 
@@ -29,8 +29,8 @@ namespace DoctorTrackerTest
         [Test]
         public void AddAppointmentPass()
         {
-            Appointment Appointment = new Appointment() { DoctorId = 1,DiseaseName="Anemia", PatientId = 123, AppointmentDate = new DateTime(10,11,2000),Status = "Scheduled" };
-            var result = _Appointmentservices.AddAppointment(Appointment);
+            Appointment appointment = new Appointment() {Id = 2, DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(2000,11,10), Status = "Scheduled" };
+            var result = _Appointmentservices.AddAppointment(appointment);
             Assert.AreEqual(2, result);
         }
 
@@ -38,9 +38,9 @@ namespace DoctorTrackerTest
         public void AddAppointmentException()
         {
             //Arrange
-            Appointment Appointment = new Appointment() { DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(10, 11, 2000), Status = "Scheduled" };
+            Appointment appointment = new Appointment() { Id = 1, DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(2000, 11, 10), Status = "Scheduled" };
             //Action
-            var exception = Assert.Throws<DuplicateItemException>(() => _Appointmentservices.AddAppointment(Appointment));
+            var exception = Assert.Throws<DuplicateItemException>(() => _Appointmentservices.AddAppointment(appointment));
             //Assert
             Assert.AreEqual("The Item with current Credentials is Already Found", exception.Message);
         }
@@ -60,7 +60,7 @@ namespace DoctorTrackerTest
         public void DeleteAppointmentException()
         {
             //Action
-            var exception = Assert.Throws<ItemNotFoundException>(() => _Appointmentservices.DeleteAppointment(2));
+            var exception = Assert.Throws<ItemNotFoundException>(() => _Appointmentservices.DeleteAppointment(3));
             //Assert
             Assert.AreEqual("The Item not found, Please provide with valid credentials.", exception.Message);
         }
@@ -89,7 +89,7 @@ namespace DoctorTrackerTest
         public void GetAppointmentByNameExceptionTest()
         {
             //Action
-            var exception = Assert.Throws<ItemNotFoundException>(() => _Appointmentservices.GetAppointmentByAppointmentIdAndPatientId(1,124));
+            var exception = Assert.Throws<ItemNotFoundException>(() => _Appointmentservices.GetAppointmentByAppointmentIdAndPatientId(3,129));
             //Assert
             Assert.AreEqual("The Item not found, Please provide with valid credentials.", exception.Message);
         }
@@ -100,7 +100,7 @@ namespace DoctorTrackerTest
         public void UpdateAppointmentPass()
         {
             //Arrange
-            Appointment Appointment = new Appointment() {DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(10, 11, 2000), Status = "Scheduled" };
+            Appointment Appointment = new Appointment() { Id = 1, DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(2000, 11, 10), Status = "Scheduled" };
             //Action
             var result = _Appointmentservices.UpdateAppointment(Appointment);
             //Assert
@@ -111,7 +111,7 @@ namespace DoctorTrackerTest
         public void UpdateAppointmentException()
         {
             //Arrange
-            Appointment Appointment = new Appointment() {DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(10, 11, 2000), Status = "Scheduled" };
+            Appointment Appointment = new Appointment() { DoctorId = 1, DiseaseName = "Anemia", PatientId = 123, AppointmentDate = new DateTime(2000, 11, 10), Status = "Scheduled" };
             //Action
             var exception = Assert.Throws<ItemNotFoundException>(() => _Appointmentservices.UpdateAppointment(Appointment));
             //Assert
