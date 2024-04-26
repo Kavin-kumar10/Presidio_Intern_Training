@@ -26,7 +26,7 @@ namespace ShoppingUnitTest
             _customerrepository = new CustomerRepository();
             Product product = new Product() { Id = 1,Name = "Shirt",Price = 120,QuantityInHand = 10 };
             _productrepository.Add(product);
-            Customer customer = new Customer() { Id = 0, Name = "kavin", Age = 21, Phone = "987654321" };
+            Customer customer = new Customer() { Id = 1, Name = "kavin", Age = 21, Phone = "987654321" };
             _customerrepository.Add(customer);
             _operation = new OperationalBL(_customerrepository,_cartrepository,_cartitemrepository,_productrepository);
         }
@@ -44,7 +44,7 @@ namespace ShoppingUnitTest
         public void UpdateCustomerPassTest()
         {
             //Arrange
-            Customer customer = new Customer() { Id = 0, Name = "kavin", Age = 21, Phone = "8344442124" };
+            Customer customer = new Customer() { Id = 1, Name = "kavin", Age = 21, Phone = "8344442124" };
 
             //Action
             var result = _operation.UpdateNewCustomer(customer);

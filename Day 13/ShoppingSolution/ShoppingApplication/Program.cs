@@ -63,7 +63,7 @@ namespace ShoppingApplication
         static void Main(string[] args)
         {
             ICustomerServices customerServices = new CustomerBL(new CustomerRepository());
-            ICartServices cartServices = new CartBL(new CartRepository());
+            //ICartServices cartServices = new CartBL(new CartRepository());
             ICartItemsServices cartItemsServices = new CartItemBL(new CartItemRepository());
             IProductServices productServices = new ProductBL(new ProductRepository());
 

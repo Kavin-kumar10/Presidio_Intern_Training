@@ -16,10 +16,8 @@ namespace ShoppingDALLibrary
             if (customer != null)
             {
                 items.Remove(customer);
-                return customer;
             }
-            throw new NoCustomerWithGiveIdException();
-
+            return customer;
         }
 
         public override Customer GetByKey(int key)
@@ -38,9 +36,8 @@ namespace ShoppingDALLibrary
             if (customer != null)
             {
                 customer = item;
-                return customer;
             }
-            throw new NoCustomerWithGiveIdException();
+            return customer;
         }
     }
 }

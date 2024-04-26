@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ShoppingBLLibrary
 {
+    /// <summary>
+    /// Seperate Solution Every Task Required Done in Single Operational File - Main FileS
+    /// </summary>
     public class OperationalBL : IOperationalServices
     {
         IRepository<int, Product> _productrepository;

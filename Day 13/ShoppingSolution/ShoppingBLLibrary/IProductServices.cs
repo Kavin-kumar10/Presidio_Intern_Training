@@ -13,6 +13,6 @@ namespace ShoppingBLLibrary
         Product GetProductById(int id);
         List<Product> GetAllProducts();
         Product UpdateProduct(Product product);
-        void DeleteProduct(int id);
+        Product DeleteProduct(int id);
     }
 }

@@ -1,4 +1,5 @@
-﻿using ShoppingDALLibrary;
+﻿using ExceptionHandling;
+using ShoppingDALLibrary;
 using ShoppingModalLibrary.cs;
 using System;
 using System.Collections.Generic;
@@ -20,27 +21,46 @@ namespace ShoppingBLLibrary
 
         public int AddProduct(Product product)
         {
-            return _productRepository.Add(product).Id; 
+            var result = _productRepository.Add(product).Id;
+            if (result != null) return result;
+            throw new DuplicateItemFoundException();
         }
 
         public Product GetProductById(int id)
         {
-            return _productRepository.GetByKey(id);
+            var result = _productRepository.GetByKey(id);
+            if ( result != null)
+            {
+                return result;
+            }
+            throw new ItemNotFoundException();
         }
 
         public List<Product> GetAllProducts()
         {
-            return _productRepository.GetAll().ToList();
+            var result = _productRepository.GetAll().ToList();
+            if(result != null) return result;
+            throw new ItemNotFoundException();
         }
 
         public Product UpdateProduct(Product product)
         {
-            return _productRepository.Update(product);
+            var result = _productRepository.Update(product);
+            if (result != null)
+            {
+                return result;
+            }
+            throw new ItemNotFoundException();
         }
 
-        public void DeleteProduct(int id)
+        public Product DeleteProduct(int id)
         {
-            _productRepository.Delete(id);
+            var result = _productRepository.Delete(id);
+            if (result != null)
+            {
+                return result;
+            }
+            throw new ItemNotFoundException();
         }
     }
 }

@@ -7,6 +7,7 @@ namespace ShoppingModalLibrary.cs
     {
         public int Id { get; set; }
         public int CustomerId { get; set; }
+        public int Shippingcharge { get; set; }   
         public Customer Customer { get; set; }//Navigation property
         public List<CartItem> CartItems { get; set; }//Navigation property
         public override string ToString()
@@ -27,12 +28,13 @@ namespace ShoppingModalLibrary.cs
 
         }
 
-        public Cart(int id, int customerId, Customer customer, List<CartItem> cartItems)
+        public Cart(int id, int customerId,int ShippingCharge, Customer customer, List<CartItem> cartItems)
         {
             Id = id;
             CustomerId = customerId;
             Customer = customer;
             CartItems = cartItems;
+            Shippingcharge = ShippingCharge;
         }
     }
 }
