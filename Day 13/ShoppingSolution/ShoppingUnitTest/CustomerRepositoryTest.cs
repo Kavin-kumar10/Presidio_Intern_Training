@@ -22,14 +22,14 @@ namespace ShoppingUnitTest
 
 
         [Test]
-        public void AddCustomerToTheList()
+        public async Task AddCustomerToTheList()
         {
             // Arrange
             _customerRepository.items.AddRange(_customers);
             var newCustomer = new Customer { Id = 3, Name = "New Customer", Age = 40 };
 
             // Action
-            var addedCustomer = _customerRepository.Add(newCustomer);
+            var addedCustomer = await _customerRepository.Add(newCustomer);
 
             // Assert
             Assert.That(_customerRepository.items.Count, Is.EqualTo(3));
@@ -38,16 +38,17 @@ namespace ShoppingUnitTest
         }
 
         [Test]
-        public void GetAllCustomerFromTheList()
+        public async Task GetAllCustomerFromTheList()
         {
             // Arrange
             _customerRepository.items.AddRange(_customers);
 
             // Action
-            var allCustomers = _customerRepository.GetAll();
+            var allCustomers = await _customerRepository.GetAll();
+            var result = _customerRepository.items;
 
             // Assert
-            Assert.That(allCustomers, Is.SameAs(_customerRepository.items)); // Assuming GetAll returns the original list
+            Assert.That(allCustomers, Is.SameAs(result)); // Assuming GetAll returns the original list
         }
 
         [Test]
@@ -107,7 +108,7 @@ namespace ShoppingUnitTest
         }
 
         [Test]
-        public void Update_ShouldUpdateCustomer()
+        public async Task Update_ShouldUpdateCustomer()
         {
             // Arrange
             int key = 1;
@@ -115,7 +116,7 @@ namespace ShoppingUnitTest
             _customerRepository.items.AddRange(_customers);
 
             // Act
-            var returnedCustomer = _customerRepository.Update(updatedCustomer);
+            var returnedCustomer = await _customerRepository.Update(updatedCustomer);
 
             // Assert
             Assert.That(returnedCustomer, Is.Not.Null);
@@ -128,7 +129,7 @@ namespace ShoppingUnitTest
         public void Update_ShouldReturnNullIfCustomerNotFound()
         {
             // Arrange
-            var updatedCustomer = new Customer
+            Customer updatedCustomer = new Customer
             {
                 Id = 3,
                 Name = "Updated Name",
@@ -139,7 +140,7 @@ namespace ShoppingUnitTest
             var exception = Assert.Throws<NoCustomerWithGiveIdException>(() => _customerRepository.Update(updatedCustomer));
 
             //Assert
-            Assert.That(exception.Message, Is.Not.Null);
+            Assert.AreEqual(exception.Message, "Customer with the given Id is not present");
         }
     }
 }

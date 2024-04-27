@@ -41,13 +41,13 @@ namespace ShoppingUnitTest
         }
 
         [Test]
-        public void UpdateCustomerPassTest()
+        public async Task UpdateCustomerPassTest()
         {
             //Arrange
             Customer customer = new Customer() { Id = 1, Name = "kavin", Age = 21, Phone = "8344442124" };
 
             //Action
-            var result = _operation.UpdateNewCustomer(customer);
+            var result = await _operation.UpdateNewCustomer(customer);
 
             //Assert
             Assert.AreEqual(result.Phone, "8344442124");
@@ -71,12 +71,12 @@ namespace ShoppingUnitTest
 
         [Test]
 
-        public void UpdateProductCountPass()
+        public async Task UpdateProductCountPass()
         {
             //Arrange
             Product product = new Product() {Id = 1, Name = "PS5", Price = 120, QuantityInHand = 10 };
             //Action
-            var result = _operation.UpdateProductCount(true, product);
+            var result = await _operation.UpdateProductCount(true, product);
             //Assert
             Assert.AreEqual(result.QuantityInHand, 9);
 
@@ -93,7 +93,7 @@ namespace ShoppingUnitTest
         }
 
         [Test]
-        public void AddNewCartItemSuccess()
+        public async void AddNewCartItemSuccess()
         {
             // Arrange
             var cart = new Cart { Id = 10, Customer = new Customer(), CustomerId = new Customer().Id, CartItems = new List<CartItem>() };
@@ -102,7 +102,7 @@ namespace ShoppingUnitTest
             _cartrepository.Add(cart); 
 
             // Act
-            var result = _operation.AddNewCartItem(cart, product);
+            var result = await _operation.AddNewCartItem(cart, product);
 
             // Assert
            Assert.AreEqual(result.Quantity,12);
@@ -111,13 +111,13 @@ namespace ShoppingUnitTest
 
 
         [Test]
-        public void CalculateTotalValueOfNoDiscount()
+        public async Task CalculateTotalValueOfNoDiscount()
         {
             // Arrange
             var cart = new Cart { Id = 1, CartItems = new List<CartItem>() { new CartItem { Price = 100 }, new CartItem { Price = 50 } } };
 
             // Act
-            var totalValue = _operation.CalculateTotalValue(cart);
+            var totalValue = await _operation.CalculateTotalValue(cart);
 
             // Assert
             Assert.AreEqual(150, totalValue);
@@ -125,13 +125,13 @@ namespace ShoppingUnitTest
 
 
         [Test]
-        public void CalculateTotalValueWithShippingCharge()
+        public async Task CalculateTotalValueWithShippingCharge()
         {
             // Arrange
             var cart = new Cart { Id = 1, CartItems = new List<CartItem>() { new CartItem { Price = 50 } } };
 
             // Act
-            var totalValue = _operation.CalculateTotalValue(cart);
+            var totalValue = await _operation.CalculateTotalValue(cart);
 
             // Assert
             Assert.AreEqual(150, totalValue); // 50 (item price) + 100 (shipping charge)
@@ -139,13 +139,13 @@ namespace ShoppingUnitTest
 
 
         [Test]
-        public void CalculateTotalValueWithDiscount()
+        public async Task CalculateTotalValueWithDiscount()
         {
             // Arrange
             var cart = new Cart { Id = 1, CartItems = new List<CartItem>() { new CartItem { Price = 100 } } };
 
             // Act
-            var totalValue = _operation.CalculateTotalValue(cart);
+            var totalValue = await _operation.CalculateTotalValue(cart);
 
             // Assert
             Assert.AreEqual(200.0d, totalValue); 

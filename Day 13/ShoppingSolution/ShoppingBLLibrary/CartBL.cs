@@ -23,21 +23,22 @@ namespace ShoppingBLLibrary
         }
 
 
-        public Product UpdateProductCount(bool Behaviour, Product product) // true to reduce count // false to increase count
+        public async Task<Product> UpdateProductCount(bool Behaviour, Product product) // true to reduce count // false to increase count
         {
-            Product myproduct = _productrepository.GetByKey(product.Id);
+
+            Product myproduct = await _productrepository.GetByKey(product.Id);
             Product outproduct = new Product();
             if (myproduct != null)
             {
                 if (Behaviour)
                 {
                     myproduct.QuantityInHand--;
-                    outproduct = _productrepository.Update(myproduct);
+                    outproduct = await _productrepository.Update(myproduct);
                 }
                 else
                 {
                     myproduct.QuantityInHand++;
-                    outproduct = _productrepository.Update(myproduct);
+                    outproduct = await _productrepository.Update(myproduct);
                 }
                 return outproduct;
             }
@@ -45,15 +46,15 @@ namespace ShoppingBLLibrary
         }
 
         // Task c
-        public CartItem AddNewCartItem(Cart cart, Product product,int count)
+        public async Task<CartItem> AddNewCartItem(Cart cart, Product product,int count)
         {
             CartItem cartitem = new CartItem() { Product = product, ProductId = product.Id, CartId = cart.Id, Discount = 10, Price = 120, PriceExpiryDate = new DateTime(), Quantity = count };
-            Cart mycart = _cartrepository.GetByKey(cart.Id);
+            Cart mycart = await _cartrepository.GetByKey(cart.Id);
             if (mycart.CartItems.Count == 5)
             {
                 throw new MaximumQuantityExceedException();
             }
-            var result = _cartitemrepository.Add(cartitem);
+            var result = await _cartitemrepository.Add(cartitem);
             mycart.CartItems.Add(cartitem);
             UpdateProductCount(true, product);
             return result;
@@ -77,9 +78,9 @@ namespace ShoppingBLLibrary
 
 
         //Task - C
-        public Cart AddItemsToCart(int CustomerId,CartItem cartitem)
+        public async Task<Cart> AddItemsToCart(int CustomerId,CartItem cartitem)
         {
-            Cart cart = GetCartByCustomerId(CustomerId);
+            Cart cart =await GetCartByCustomerId(CustomerId);
             if(cart.CartItems.Count > 5)
             {
                 throw new MaximumQuantityExceedException();
@@ -90,16 +91,16 @@ namespace ShoppingBLLibrary
             throw new ItemNotFoundException();
         }
 
-        public Cart EmptyCart(Cart cart)
+        public async Task<Cart> EmptyCart(Cart cart)
         {
             cart.CartItems = new List<CartItem>();
             _cartrepository.Update(cart);
             throw new NotImplementedException();
         }
 
-        public Cart GetCartByCustomerId(int customerId)
+        public async Task<Cart> GetCartByCustomerId(int customerId)
         {
-            var elem = _cartrepository.GetAll();
+            var elem = await _cartrepository.GetAll();
             foreach (var item in elem)
             {
                 if (item.CustomerId == customerId) return item;
@@ -107,18 +108,18 @@ namespace ShoppingBLLibrary
             throw new ItemNotFoundException();
         }
 
-        public Cart GetCartById(int id)
+        public async Task<Cart> GetCartById(int id)
         {
-            var result = _cartrepository.GetByKey(id);
+            var result = await _cartrepository.GetByKey(id);
             if(result != null)
             return result;
 
             throw new ItemNotFoundException();
         }
 
-        public List<CartItem> GetCartItemsByCartId(int id)
+        public async Task<List<CartItem>> GetCartItemsByCartId(int id)
         {
-            var elem = _cartrepository.GetByKey(id);
+            var elem = await _cartrepository.GetByKey(id);
             if(elem != null)
             {
                 return elem.CartItems;
@@ -126,9 +127,9 @@ namespace ShoppingBLLibrary
             throw new ItemNotFoundException() ;
         }
 
-        public Cart UpdateCart(Cart cart)
+        public async Task<Cart> UpdateCart(Cart cart)
         {
-            var result = _cartrepository.Update(cart);
+            var result = await _cartrepository.Update(cart);
             if (result != null) return result;
             throw new ItemNotFoundException();
         }

@@ -19,16 +19,16 @@ namespace ShoppingBLLibrary
         }
 
 
-        public int AddProduct(Product product)
+        public async Task<int> AddProduct(Product product)
         {
-            var result = _productRepository.Add(product).Id;
-            if (result != null) return result;
+            var result =await _productRepository.Add(product);
+            if (result != null) return result.Id;
             throw new DuplicateItemFoundException();
         }
 
-        public Product GetProductById(int id)
+        public async Task<Product> GetProductById(int id)
         {
-            var result = _productRepository.GetByKey(id);
+            var result = await _productRepository.GetByKey(id);
             if ( result != null)
             {
                 return result;
@@ -36,16 +36,16 @@ namespace ShoppingBLLibrary
             throw new ItemNotFoundException();
         }
 
-        public List<Product> GetAllProducts()
+        public async Task<List<Product>> GetAllProducts()
         {
-            var result = _productRepository.GetAll().ToList();
-            if(result != null) return result;
+            var result = await _productRepository.GetAll();
+            if(result != null) return result.ToList();
             throw new ItemNotFoundException();
         }
 
-        public Product UpdateProduct(Product product)
+        public async Task<Product> UpdateProduct(Product product)
         {
-            var result = _productRepository.Update(product);
+            var result = await _productRepository.Update(product);
             if (result != null)
             {
                 return result;
@@ -53,9 +53,9 @@ namespace ShoppingBLLibrary
             throw new ItemNotFoundException();
         }
 
-        public Product DeleteProduct(int id)
+        public async Task<Product> DeleteProduct(int id)
         {
-            var result = _productRepository.Delete(id);
+            var result = await _productRepository.Delete(id);
             if (result != null)
             {
                 return result;

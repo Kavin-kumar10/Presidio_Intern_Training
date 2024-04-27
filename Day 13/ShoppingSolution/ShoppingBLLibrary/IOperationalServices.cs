@@ -9,11 +9,11 @@ namespace ShoppingBLLibrary
 {
     public interface IOperationalServices
     {
-        Customer CreateNewCustomer();
-        Customer UpdateNewCustomer(Customer customer);
-        Product UpdateProductCount(bool Behaviour, Product product);
-        CartItem AddNewCartItem(Cart cart, Product product);
-        double CalculateTotalValue(Cart cart);
+        Task<Customer> CreateNewCustomer();
+        Task<Customer> UpdateNewCustomer(Customer customer);
+        Task<Product> UpdateProductCount(bool Behaviour, Product product);
+        Task<CartItem> AddNewCartItem(Cart cart, Product product);
+        Task<double> CalculateTotalValue(Cart cart);
 
     }
 }

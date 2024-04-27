@@ -9,12 +9,12 @@ namespace ShoppingBLLibrary
 {
     public interface ICartServices
     {
-        List<CartItem> GetCartItemsByCartId(int id);
-        Cart GetCartById(int id);
-        Cart AddItemsToCart(int CustomerId, CartItem cartitem);
-        Cart UpdateCart(Cart cart);
-        Cart EmptyCart(Cart cart);
-        Cart GetCartByCustomerId(int customerId);
-
+        Task<List<CartItem>> GetCartItemsByCartId(int id);
+        Task<Cart> GetCartById(int id);
+        Task<Cart> AddItemsToCart(int CustomerId, CartItem cartitem);
+        Task<Cart> UpdateCart(Cart cart);
+        Task<Cart> EmptyCart(Cart cart);
+        Task<Cart> GetCartByCustomerId(int customerId);
+        Task<Product> UpdateProductCount(bool Behaviour, Product product);
     }
 }

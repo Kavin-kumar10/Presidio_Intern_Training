@@ -93,14 +93,14 @@ namespace ShoppingUnitTest
         }
 
         [Test]
-        public void UpdateProductPass()
+        public async Task UpdateProductPass()
         {
             // Arrange
             int key = 1;
             var updatedProduct = new Product { Id = 1, Name = "Updated Shirt", Price = 150, QuantityInHand = 2 };
 
             // Act
-            var returnedProduct = _repository.Update(updatedProduct);
+            var returnedProduct = await _repository.Update(updatedProduct);
 
             // Assert
             Assert.That(returnedProduct, Is.Not.Null);

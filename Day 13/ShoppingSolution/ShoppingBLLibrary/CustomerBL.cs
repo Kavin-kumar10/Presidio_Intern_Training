@@ -18,37 +18,37 @@ namespace ShoppingBLLibrary
             _customerrepository = customerrepository;
         }
 
-        public int AddCustomer(Customer customer)
+        public async Task<int> AddCustomer(Customer customer)
         {
-            var result = _customerrepository.Add(customer);
+            var result = await _customerrepository.Add(customer);
             if (result != null) { return result.Id; }
             throw new DuplicateItemFoundException();
         }
 
-        public Customer DeleteCustomer(int id)
+        public async Task<Customer> DeleteCustomer(int id)
         {
-            var result = _customerrepository.Delete(id); 
+            var result = await _customerrepository.Delete(id); 
             if (result != null) { return result; }
             throw new NoCustomerWithGiveIdException();
         }
 
-        public List<Customer> GetAllCustomers()
+        public async Task<List<Customer>> GetAllCustomers()
         {
-            var result = _customerrepository.GetAll();
+            var result = await _customerrepository.GetAll();
             if(result != null) { return result.ToList(); };
             throw new NoCustomerWithGiveIdException();
         }
 
-        public Customer GetCustomerById(int id)
+        public async Task<Customer> GetCustomerById(int id)
         {
-            var result = _customerrepository.GetByKey(id);
+            var result = await _customerrepository.GetByKey(id);
             if (result != null) return result;
             throw new NoCustomerWithGiveIdException();
         }
 
-        public int UpdateCustomer(Customer customer)
+        public async Task<int> UpdateCustomer(Customer customer)
         {
-            var result = _customerrepository.Update(customer);
+            var result = await _customerrepository.Update(customer);
             if(result != null) { return result.Id; };
             throw new NoCustomerWithGiveIdException();
         }

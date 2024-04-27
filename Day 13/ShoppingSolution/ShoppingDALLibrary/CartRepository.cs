@@ -10,15 +10,15 @@ namespace ShoppingDALLibrary
 {
     public class CartRepository : AbstractRepository<int, Cart>
     {
-        public override Cart Delete(int key)
+        public override async Task<Cart> Delete(int key)
         {
-            Cart cart = GetByKey(key);
+            Cart cart = await GetByKey(key);
             if (cart != null) { items.Remove(cart); };
             return cart;
             throw new ItemNotFoundException();
         }
 
-        public override Cart GetByKey(int key)
+        public override async Task<Cart> GetByKey(int key)
         {
             for (int i = 0; i < items.Count; i++)
             {
@@ -28,9 +28,9 @@ namespace ShoppingDALLibrary
             throw new ItemNotFoundException();
         }
 
-        public override Cart Update(Cart item)
+        public override async Task<Cart> Update(Cart item)
         {
-            Cart cart = GetByKey(item.Id);
+            Cart cart = await GetByKey(item.Id);
             if (cart != null)
             {
                 cart = item;

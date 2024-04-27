@@ -9,8 +9,8 @@ namespace ShoppingBLLibrary
 {
     public interface ICartItemsServices
     {
-        List<CartItem> GetCartItemsByCartId(int cartId);
-        CartItem AddCartItem(CartItem cartItem);
+        Task<List<CartItem>> GetCartItemsByCartId(int cartId);
+        Task<CartItem> AddCartItem(CartItem cartItem);
         void UpdateCartItem(CartItem cartItem);
         void RemoveCartItem(int cartItemId);
         double CalculateCartItemSubtotal(CartItem cartItem);

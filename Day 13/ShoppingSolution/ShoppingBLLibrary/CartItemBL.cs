@@ -18,18 +18,20 @@ namespace ShoppingBLLibrary
             _cartItemRepository = cartItemRepository;
         }
 
-        public List<CartItem> GetCartItemsByCartId(int cartId)
+        public async Task<List<CartItem>> GetCartItemsByCartId(int cartId)
         {
-            return _cartItemRepository.GetAll().Where(item => item.CartId == cartId).ToList();
+            var result = await _cartItemRepository.GetAll();
+                return result.Where(item => item.CartId == cartId)
+                .ToList();
         }
 
-        public CartItem AddCartItem(CartItem cartItem)
+        public async Task<CartItem> AddCartItem(CartItem cartItem)
         {
             if (cartItem.Quantity <= 0)
             {
                 throw new ArgumentOutOfRangeException(nameof(cartItem.Quantity), "Quantity must be greater than zero.");
             }
-            return _cartItemRepository.Add(cartItem);
+            return await _cartItemRepository.Add(cartItem);
         }
 
         public void UpdateCartItem(CartItem cartItem)

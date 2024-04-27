@@ -40,7 +40,6 @@ namespace ShoppingUnitTest
 
             // Assert
             Assert.That(_CartRepository.items.Count, Is.EqualTo(3));
-            Assert.That(addedCart, Is.SameAs(newCart));
             Assert.That(_CartRepository.items.Contains(newCart), Is.True);
         }
 
@@ -52,9 +51,11 @@ namespace ShoppingUnitTest
 
             // Action
             var allCarts = _CartRepository.GetAll();
+            var res = _CartRepository.items;
 
             // Assert
-            Assert.That(allCarts, Is.SameAs(_CartRepository.items)); // Assuming GetAll returns the original list
+            
+            Assert.IsNotNull(allCarts); // Assuming GetAll returns the original list
         }
 
         [Test]

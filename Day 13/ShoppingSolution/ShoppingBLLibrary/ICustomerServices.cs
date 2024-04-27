@@ -4,11 +4,11 @@ namespace ShoppingBLLibrary
 {
     public interface ICustomerServices
     {
-        List<Customer> GetAllCustomers();
-        Customer GetCustomerById(int id);
-        int AddCustomer(Customer customer);
-        int UpdateCustomer(Customer customer);
-        Customer DeleteCustomer(int id);
+        Task<List<Customer>> GetAllCustomers();
+        Task<Customer> GetCustomerById(int id);
+        Task<int> AddCustomer(Customer customer);
+        Task<int> UpdateCustomer(Customer customer);
+        Task<Customer> DeleteCustomer(int id);
 
     }
 }
