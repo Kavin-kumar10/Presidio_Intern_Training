@@ -1,4 +1,4 @@
- use Pubs
+use Pubs
 SELECT * FROM pub_info
 SELECT * FROM publishers
 SELECT * FROM authors
@@ -14,7 +14,7 @@ SELECT * FROM sales
 
 sp_help authors
 
-ALTER PROC proc_booksPublished(@fname varchar(20))
+CREATE PROC proc_booksPublished(@fname varchar(20))
 as 
 begin
 	SELECT a.au_fname,title FROM titles t
