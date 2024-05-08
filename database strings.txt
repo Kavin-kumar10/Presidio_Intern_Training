@@ -1,0 +1,2 @@
+Scaffold-DbContext "Data Source=CB66JX3\DEMOINSTANCE;Initial Catalog=dbDoctorTracker;Integrated Security=true;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Model
+

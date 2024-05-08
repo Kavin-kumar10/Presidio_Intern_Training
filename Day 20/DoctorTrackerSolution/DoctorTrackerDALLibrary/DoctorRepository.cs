@@ -5,8 +5,11 @@ namespace DoctorTrackerDALLibrary
     public class DoctorRepository : IRepository<int, Doctor>
     {
         readonly Dictionary<int, Doctor> _doctors;
+        readonly dbDoctorTrackerContext _context;
+
         public DoctorRepository() { 
             _doctors = new Dictionary<int, Doctor>();
+            _context = new dbDoctorTrackerContext();
         }
 
         public int GenerateId()
@@ -22,6 +25,8 @@ namespace DoctorTrackerDALLibrary
                 return null;
             }
             item.Id = GenerateId();
+            _context.Doctors.Add(item);
+            Console.WriteLine("Added");
             _doctors.Add(item.Id, item);
             return item;
         }

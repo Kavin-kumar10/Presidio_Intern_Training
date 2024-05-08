@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DoctorTrackerBLLibrary\DoctorTrackerBLLibrary.csproj" />
+    <ProjectReference Include="..\DoctorTrackerDALLibrary\DoctorTrackerDALLibrary.csproj" />
     <ProjectReference Include="..\DoctorTrackerModel\DoctorTrackerModel.csproj" />
   </ItemGroup>
 
