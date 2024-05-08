@@ -28,10 +28,10 @@ exec proc_booksPublished 'Albert'
 
 -- 2) Create a sp that will take the employee's firtname and print all the titles sold by him/her, price, quantity and the cost.
 
-CREATE PROC proc_detailsWithEmployee(@efname varchar(30))
+ALTER PROC proc_detailsWithEmployee(@efname varchar(30))
 AS
 BEGIN
-	SELECT t.title,t.price,s.qty,(t.price*s.qty) AS 'Total Cost' FROM employee e 
+	SELECT e.fname,t.title,t.price,s.qty,(t.price*s.qty) AS 'Total Cost' FROM employee e 
 	JOIN titles t ON e.pub_id = t.pub_id
 	JOIN sales s ON s.title_id = t.title_id
 	WHERE e.fname = @efname
