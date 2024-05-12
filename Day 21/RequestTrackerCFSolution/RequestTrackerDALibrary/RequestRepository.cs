@@ -18,7 +18,7 @@ namespace RequestTrackerDALibrary
         }
         public async Task<Request> Add(Request entity)
         {
-            _context.Add(entity);
+            _context.Requests.Add(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
@@ -50,10 +50,10 @@ namespace RequestTrackerDALibrary
             var request = await Get(entity.RequestNumber);
             if (request != null)
             {
-                _context.Entry<Request>(request).State = EntityState.Modified;
+                _context.Entry<Request>(entity).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            return request;
+            return entity;
         }
 
     }

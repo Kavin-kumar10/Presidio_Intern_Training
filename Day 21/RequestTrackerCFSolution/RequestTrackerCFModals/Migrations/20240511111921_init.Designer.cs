@@ -12,7 +12,7 @@ using RequestTrackerCFModals;
 namespace RequestTrackerCFModals.Migrations
 {
     [DbContext(typeof(RequestTrackerContext))]
-    [Migration("20240509103021_init")]
+    [Migration("20240511111921_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -49,6 +49,13 @@ namespace RequestTrackerCFModals.Migrations
                     b.ToTable("Employees");
 
                     b.HasData(
+                        new
+                        {
+                            Id = 100,
+                            Name = "",
+                            Password = "",
+                            Role = ""
+                        },
                         new
                         {
                             Id = 101,
@@ -109,6 +116,74 @@ namespace RequestTrackerCFModals.Migrations
                     b.ToTable("Requests");
                 });
 
+            modelBuilder.Entity("RequestTrackerCFModals.RequestSolution", b =>
+                {
+                    b.Property<int>("SolutionId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("SolutionId"), 1L, 1);
+
+                    b.Property<bool>("IsSolved")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("RequestId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("RequestRaiserComment")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SolutionDescription")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SolvedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SolvedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("SolutionId");
+
+                    b.HasIndex("RequestId");
+
+                    b.HasIndex("SolvedBy");
+
+                    b.ToTable("RequestSolutions");
+                });
+
+            modelBuilder.Entity("RequestTrackerCFModals.SolutionFeedback", b =>
+                {
+                    b.Property<int>("FeedbackId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("FeedbackId"), 1L, 1);
+
+                    b.Property<int>("FeedbackBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FeedbackDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<float>("Rating")
+                        .HasColumnType("real");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SolutionId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FeedbackId");
+
+                    b.HasIndex("FeedbackBy");
+
+                    b.HasIndex("SolutionId");
+
+                    b.ToTable("Feedbacks");
+                });
+
             modelBuilder.Entity("RequestTrackerCFModals.Request", b =>
                 {
                     b.HasOne("RequestTrackerCFModals.Employee", "RequestClosedByEmployee")
@@ -128,11 +203,63 @@ namespace RequestTrackerCFModals.Migrations
                     b.Navigation("RequestClosedByEmployee");
                 });
 
+            modelBuilder.Entity("RequestTrackerCFModals.RequestSolution", b =>
+                {
+                    b.HasOne("RequestTrackerCFModals.Request", "RequestRaised")
+                        .WithMany("RequestSolutions")
+                        .HasForeignKey("RequestId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RequestTrackerCFModals.Employee", "SolvedByEmployee")
+                        .WithMany("SolutionsProvided")
+                        .HasForeignKey("SolvedBy")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("RequestRaised");
+
+                    b.Navigation("SolvedByEmployee");
+                });
+
+            modelBuilder.Entity("RequestTrackerCFModals.SolutionFeedback", b =>
+                {
+                    b.HasOne("RequestTrackerCFModals.Employee", "FeedbackByEmployee")
+                        .WithMany("FeedbacksGiven")
+                        .HasForeignKey("FeedbackBy")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("RequestTrackerCFModals.RequestSolution", "Solution")
+                        .WithMany("Feedbacks")
+                        .HasForeignKey("SolutionId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("FeedbackByEmployee");
+
+                    b.Navigation("Solution");
+                });
+
             modelBuilder.Entity("RequestTrackerCFModals.Employee", b =>
                 {
+                    b.Navigation("FeedbacksGiven");
+
                     b.Navigation("RequestsClosed");
 
                     b.Navigation("RequestsRaised");
+
+                    b.Navigation("SolutionsProvided");
+                });
+
+            modelBuilder.Entity("RequestTrackerCFModals.Request", b =>
+                {
+                    b.Navigation("RequestSolutions");
+                });
+
+            modelBuilder.Entity("RequestTrackerCFModals.RequestSolution", b =>
+                {
+                    b.Navigation("Feedbacks");
                 });
 #pragma warning restore 612, 618
         }

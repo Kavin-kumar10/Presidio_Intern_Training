@@ -45,10 +45,10 @@ namespace RequestTrackerDALibrary
             var employee = await Get(entity.Id);
             if (employee != null)
             {
-                _context.Entry<Employee>(employee).State = EntityState.Modified;
+                _context.Entry<Employee>(entity).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
             }
-            return employee;
+            return entity;
         }
     }
 }

@@ -8,8 +8,7 @@ namespace RequestTrackerBLLibrary
         private readonly IRepository<int, Employee> _repository;
         public EmployeeLoginBL()
         {
-            IRepository<int, Employee> repo = new EmployeeRepository(new RequestTrackerContext());
-            _repository = repo;
+            _repository = new EmployeeRepository(new RequestTrackerContext());
         }
 
         public async Task<bool> Login(Employee employee)

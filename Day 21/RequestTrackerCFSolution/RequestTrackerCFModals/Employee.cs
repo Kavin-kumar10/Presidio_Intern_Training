@@ -10,12 +10,15 @@
         {
             return Id + " " + Name + " " + Role;
         }
+
         public virtual bool PasswordCheck(string password)
         {
             return this.Password == password;
         }
-
         public ICollection<Request> RequestsRaised { get; set; }//No effect on the table
         public ICollection<Request> RequestsClosed { get; set; }//No effect on the table
+        public ICollection<RequestSolution> SolutionsProvided { get; set; }
+        public ICollection<SolutionFeedback> FeedbacksGiven { get; set; }
+
     }
 }
