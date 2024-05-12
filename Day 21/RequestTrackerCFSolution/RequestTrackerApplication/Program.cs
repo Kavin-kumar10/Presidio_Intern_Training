@@ -10,6 +10,7 @@ namespace RequestTrackerApplication
         private static IEmployeeBL employeeBL = new EmployeeBL();   
         private static IRequestBL requestBL = new RequestBL();
         private static IRequestSolutionBL solutionBL = new RequestSolutionBL();
+        private static ISolutionFeedback feedbackBL = new SolutionFeedbackBL();
         private static ISolutionFeedback solutionFeedbackBL = new SolutionFeedbackBL();
         private static IEmployeeLoginBL employeeLoginBL = new EmployeeLoginBL();
 
@@ -111,7 +112,7 @@ namespace RequestTrackerApplication
                 Console.WriteLine(request.ToString());
                 Console.WriteLine();
             }
-            Console.WriteLine("1. Provide Solution to a Request \n 2. Provide Feedback to a Request \n 0. Return");
+            Console.WriteLine("1. Provide Solution to a Request \n2. Show Solutions of Request \n3. Close a Request \n0. Return \n");
             int Reqresponse = Convert.ToInt32(Console.ReadLine());
             switch (Reqresponse)
             {
@@ -120,9 +121,15 @@ namespace RequestTrackerApplication
                     break;
                 case 1:
                     await provideSolution(employee, requests);
+                    await GetRequests(employee);
                     break;
                 case 2:
-                    //await provideFeedback(employee);
+                    await showSolutions(employee, requests);
+                    await GetRequests(employee);
+                    break;
+                case 3:
+                    await CloseRequest(employee, requests);
+                    await GetRequests(employee);
                     break;
                 default:
                     Console.WriteLine("Invalid Input");
@@ -146,13 +153,14 @@ namespace RequestTrackerApplication
             switch (Reqresponse)
             {
                 case 0:
-                    await AdminMenu(employee);
                     break;
                 case 1:
                     await provideSolution(employee, requests);
+                    await GetMyRequests(employee);
                     break;
                 case 2:
                     await showSolutions(employee,requests);
+                    await GetMyRequests(employee);
                     break;
                 default:
                     Console.WriteLine("Invalid Input");
@@ -166,12 +174,48 @@ namespace RequestTrackerApplication
         // Show Solutions
         //---------------------------------------------------------------------------------------------//
 
+        async Task CloseRequest(Employee employee, IList<Request> requests)
+        {
+            Console.WriteLine("Give RequestID to Close : ");
+            int RequestID = Convert.ToInt32(Console.ReadLine());   
+            Request request = requests.SingleOrDefault(r=>r.RequestNumber == RequestID);
+            request.RequestClosedBy = employee.Id;
+            request.RequestStatus = "Closed";
+            request.ClosedDate = DateTime.Now;
+            await requestBL.UpdateRequest(request);
+        }
+
+        //---------------------------------------------------------------------------------------------//
+        // Show Solutions
+        //---------------------------------------------------------------------------------------------//
+
         async Task showSolutions(Employee employee, IList<Request> requests)
         {
             Console.WriteLine("Enter Request Number to See the Solutions");
             int RequestId = Convert.ToInt32(Console.ReadLine());
             IList<RequestSolution> solutions = await solutionBL.GetAllRequestSolutionbyId(RequestId);
             foreach (RequestSolution solution in solutions) { Console.WriteLine(solution.ToString());}
+            Console.WriteLine();
+            Console.WriteLine("1. Add Feedback to the Solution. 2. Show Feedbacks 0. Return");
+            int response = Convert.ToInt32(Console.ReadLine());
+            switch(response)
+            {
+                case 0:
+                    await GetMyRequests(employee);
+                    break;
+                case 1:
+                    await AddFeedback(employee,solutions);
+                    await GetMyRequests(employee);
+                    break;
+                case 2:
+                    await ShowFeedback(employee,solutions,requests);
+                    await GetMyRequests(employee);
+                    break;
+                default:
+                    Console.WriteLine("Invalid entry");
+                    await GetMyRequests(employee);
+                    break;
+            }
         }
 
         //---------------------------------------------------------------------------------------------//
@@ -202,6 +246,42 @@ namespace RequestTrackerApplication
             Console.WriteLine($"Solution Added to {request.RequestNumber}");
         }
 
+
+        //---------------------------------------------------------------------------------------------//
+        // Provide Feedback
+        //---------------------------------------------------------------------------------------------//
+
+        async Task AddFeedback(Employee employee,IList<RequestSolution> solutions)
+        {
+            Console.WriteLine();
+            foreach(RequestSolution solution in solutions) { 
+                Console.WriteLine(solution.ToString());
+                Console.WriteLine();
+            }
+            Console.WriteLine("Enter Solution Id to Add Feedback : ");
+            SolutionFeedback feedback = new SolutionFeedback();
+            int solutionID = Convert.ToInt32(Console.ReadLine());
+            feedback.SolutionId = solutionID;
+            feedback.FeedbackDate = DateTime.Now;
+            //feedback.FeedbackByEmployee = employee;
+            feedback.FeedbackBy = employee.Id;
+            Console.WriteLine("Enter Remarks/Feedback for Solutions");
+            feedback.Remarks = Console.ReadLine();
+            Console.WriteLine("Enter Solution Rating out of 5 : ");
+            feedback.Rating = Convert.ToInt32(Console.ReadLine());  
+            await feedbackBL.AddFeedback(feedback);
+        }
+
+        async Task ShowFeedback(Employee employee,IList<RequestSolution> solutions,IList<Request> requests)
+        {
+            Console.WriteLine("Enter SolutionID: ");
+            int SolutionId = Convert.ToInt32(Console.ReadLine());
+            IList<SolutionFeedback> feedbacks = await feedbackBL.GetAllfeedbackBySolutionID(SolutionId);
+            foreach (SolutionFeedback feedback in feedbacks) { Console.WriteLine(feedback.ToString()); }
+            await showSolutions(employee, requests);
+        }
+
+
         //---------------------------------------------------------------------------------------------//
         // MenuBars
         //---------------------------------------------------------------------------------------------//
@@ -212,24 +292,29 @@ namespace RequestTrackerApplication
             Console.WriteLine("1. Raise a Request");
             Console.WriteLine("2. View Request Status");
             Console.WriteLine("3. View All Request Status");
+            Console.WriteLine("0. End");
             int response = Convert.ToInt32(Console.ReadLine());
             switch (response)
             {
                 case 0:
+                    Console.WriteLine("You are Logged out");
                     break;
                 case 1:
                     await RaiseNewRequest(employee);
+                    await AdminMenu(employee);
                     break;
                 case 2:
                     await GetMyRequests(employee);
+                    await AdminMenu(employee);
                     break;
                 case 3:
                     IList<Request> requests = await GetRequests(employee);
+                    await AdminMenu(employee);
                     Console.WriteLine();
                     break;
                 default:
                     Console.WriteLine("Invalid Selection");
-                    AdminMenu(employee);
+                    await AdminMenu(employee);
                     break;
 
             }
@@ -240,20 +325,24 @@ namespace RequestTrackerApplication
             Console.WriteLine("Role : User");
             Console.WriteLine("1. Raise a Request");
             Console.WriteLine("2. View Request Status");
+            Console.WriteLine("0. End");
             int response = Convert.ToInt32(Console.ReadLine());
             switch (response)
             {
                 case 0:
+                    Console.WriteLine("You are Logged out");
                     break;
                 case 1:
                     await RaiseNewRequest(employee);
+                    await UserMenu(employee);
                     break;
                 case 2:
                     await GetMyRequests(employee);
+                    await UserMenu(employee);
                     break;
                 default:
                     Console.WriteLine("Invalid Selection");
-                    UserMenu(employee);
+                    await UserMenu(employee);
                     break;
 
             }
@@ -264,11 +353,11 @@ namespace RequestTrackerApplication
         {
             Program program = new Program();
             Employee employee = await program.Authentication();
-            Console.WriteLine(employee.ToString());
             if (employee == null) {
                 Console.WriteLine("You are not Authorized");
                 return;
             };
+            Console.WriteLine(employee.ToString());
             switch (employee.Role)
             {
                 case "Admin":

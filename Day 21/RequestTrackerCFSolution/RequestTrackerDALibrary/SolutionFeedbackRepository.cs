@@ -21,6 +21,7 @@ namespace RequestTrackerDALibrary
         {
             _context.Feedbacks.Add(entity);
             await _context.SaveChangesAsync();
+            return entity;
             throw new NotImplementedException();
         }
 
