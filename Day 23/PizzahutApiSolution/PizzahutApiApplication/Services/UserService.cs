@@ -56,8 +56,8 @@ namespace PizzahutApiApplication.Services
             try
             {
                 customer = customerdto;
-                user = MapCustomerUserDTOToUser(customerdto);
                 customer = await _customerRepository.Add(customer);
+                user = MapCustomerUserDTOToUser(customerdto,customer);
                 user = await _userRepository.Add(user);
                 ((CustomerDTO)customer).Password = string.Empty;
                 return customer;
@@ -84,10 +84,10 @@ namespace PizzahutApiApplication.Services
             await _customerRepository.Delete(customer.Id);
         }
 
-        public User MapCustomerUserDTOToUser(CustomerDTO customerdto)
+        public User MapCustomerUserDTOToUser(CustomerDTO customerdto,Customer customer)
         {
             User user = new User();
-            user.CustomerId = customerdto.Id;
+            user.CustomerId = customer.Id;
             user.Status = "Disabled";
             HMACSHA512 hMACSHA = new HMACSHA512();
             user.PasswordHashKey = hMACSHA.Key;
