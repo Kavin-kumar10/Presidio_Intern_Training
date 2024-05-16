@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using RequestTrackerAPIApp.Context;
-using RequestTrackerAPIApp.Interfaces;
-using RequestTrackerAPIApp.Modals;
-using RequestTrackerAPIApp.Repositories;
-using RequestTrackerAPIApp.Services;
+using PizzahutApiApplication.Context;
+using PizzahutApiApplication.Interfaces;
+using PizzahutApiApplication.Models;
+using PizzahutApiApplication.Repositories;
+using PizzahutApiApplication.Services;
 
-namespace RequestTrackerAPIApp
+namespace PizzahutApiApplication
 {
     public class Program
     {
@@ -20,19 +20,21 @@ namespace RequestTrackerAPIApp
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            #region SQLConnection
-            builder.Services.AddDbContext<RequestTrackerContext>(
+
+            builder.Services.AddDbContext<PizzahutContext>(
                 options => options.UseSqlServer(builder.Configuration.GetConnectionString("defaultConnection"))
             );
-            #endregion
+
+            builder.Services.AddScoped<IRepository<int, Pizza>, PizzaRepository>();
+            builder.Services.AddScoped<IPizzaService, PizzaService>();
 
 
-            builder.Services.AddScoped<IRepository<int, Employee>, EmployeeRepository>();
+            builder.Services.AddScoped<IRepository<int,Customer>, CustomerRepository>();
             builder.Services.AddScoped<IRepository<int, User>, UserRepository>();
-           
+            builder.Services.AddScoped<IUserService, UserService>();
 
-            builder.Services.AddScoped<IEmployeeService, EmployeeBasicService>();
-            builder.Services.AddScoped<IUserService,UserService>();
+
+
 
             var app = builder.Build();
 
@@ -49,7 +51,6 @@ namespace RequestTrackerAPIApp
             app.MapControllers();
 
             app.Run();
-
         }
     }
 }
