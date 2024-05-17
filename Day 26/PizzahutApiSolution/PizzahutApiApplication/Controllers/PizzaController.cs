@@ -34,5 +34,40 @@ namespace PizzahutApiApplication.Controllers
             }
         }
 
+        [HttpPost]
+        [Route("GetPizzaById")]
+        [Authorize]
+        [ProducesResponseType(typeof(Pizza), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<Pizza>> GetPizza(int PizzaId)
+        {
+            try
+            {
+                var result = await _service.GetById(PizzaId);
+                return Ok(result);
+            }
+            catch(NoItemsFoundException nife)
+            {
+                return BadRequest(new ErrorModel(404, nife.Message));
+            }
+        }
+
+        [HttpPost]
+        [Authorize]
+        [ProducesResponseType(typeof(Pizza),StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(ErrorModel),StatusCodes.Status400BadRequest)]
+        public async Task<ActionResult<Pizza>> AddNewPizza(Pizza pizza)
+        {
+            try
+            {
+                var result = await _service.CreatePizza(pizza);
+                return Ok(result);
+            }
+            catch(CannotCreateItem cci)
+            {
+                return BadRequest(new ErrorModel(400, cci.Message));
+            }
+        }
+
     }
 }

@@ -31,5 +31,26 @@ namespace PizzahutApiApplication.Services
             }
             throw new NoItemsFoundException();
         }
+
+        public async Task<Pizza> GetById(int id)
+        {
+            var Pizza = await _repository.Get(id);
+            if(Pizza != null)
+            {
+                return Pizza;
+            }
+            throw new NoItemsFoundException();
+        }
+
+        public async Task<Pizza> CreatePizza(Pizza pizza)
+        {
+            var result = await _repository.Add(pizza);
+            if(result != null)
+            {
+                return result;
+            }
+            throw new CannotCreateItem();
+
+        }
     }
 }

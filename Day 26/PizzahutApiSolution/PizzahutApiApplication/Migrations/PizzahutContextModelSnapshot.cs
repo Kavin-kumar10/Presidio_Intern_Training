@@ -44,7 +44,7 @@ namespace PizzahutApiApplication.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Customers");
+                    b.ToTable("Customers", (string)null);
                 });
 
             modelBuilder.Entity("PizzahutApiApplication.Models.Pizza", b =>
@@ -77,7 +77,7 @@ namespace PizzahutApiApplication.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Pizzas");
+                    b.ToTable("Pizzas", (string)null);
 
                     b.HasData(
                         new
@@ -125,7 +125,7 @@ namespace PizzahutApiApplication.Migrations
 
                     b.HasKey("CustomerId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("PizzahutApiApplication.Models.Pizza", b =>

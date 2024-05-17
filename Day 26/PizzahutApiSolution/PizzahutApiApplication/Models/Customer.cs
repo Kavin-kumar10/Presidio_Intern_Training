@@ -11,6 +11,5 @@ namespace PizzahutApiApplication.Models
         public string Phone { get; set; }
         public string Role { get; set; }
         public virtual IEnumerable<Pizza> OrderList { get; set; }
-
     }
 }
