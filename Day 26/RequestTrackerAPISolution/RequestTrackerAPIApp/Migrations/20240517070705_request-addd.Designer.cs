@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RequestTrackerAPIApp.Context;
 
@@ -11,9 +12,10 @@ using RequestTrackerAPIApp.Context;
 namespace RequestTrackerAPIApp.Migrations
 {
     [DbContext(typeof(RequestTrackerContext))]
-    partial class RequestTrackerContextModelSnapshot : ModelSnapshot
+    [Migration("20240517070705_request-addd")]
+    partial class requestaddd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -85,7 +87,7 @@ namespace RequestTrackerAPIApp.Migrations
                     b.Property<DateTime?>("ClosedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("RequestClosedBy")
+                    b.Property<int>("RequestClosedBy")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("RequestDate")
@@ -138,7 +140,8 @@ namespace RequestTrackerAPIApp.Migrations
                     b.HasOne("RequestTrackerAPIApp.Modals.Employee", "RequestClosedByEmployee")
                         .WithMany("RequestsClosed")
                         .HasForeignKey("RequestClosedBy")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("RequestTrackerAPIApp.Modals.Employee", "RaisedByEmployee")
                         .WithMany("RequestsRaised")

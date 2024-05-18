@@ -71,12 +71,15 @@ namespace RequestTrackerAPIApp
             #region repositories
             builder.Services.AddScoped<IRepository<int, Employee>, EmployeeRepository>();
             builder.Services.AddScoped<IRepository<int, User>, UserRepository>();
+            builder.Services.AddScoped<IRepository<int,Request>, RequestRepository>();
             #endregion
 
             #region services
             builder.Services.AddScoped<IEmployeeService, EmployeeBasicService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<ITokenService, TokenService>();
+            builder.Services.AddScoped<IActivateService, ActivateService>();
+            builder.Services.AddScoped<IRequestService, RequestService>();
             #endregion
 
             var app = builder.Build();

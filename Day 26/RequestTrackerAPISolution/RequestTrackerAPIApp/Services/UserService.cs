@@ -32,11 +32,11 @@ namespace RequestTrackerAPIApp.Services
             if (isPasswordSame)
             {
                 var employee = await _employeeRepo.Get(loginDTO.UserId);
-                // if(userDB.Status =="Active")
-                //{
-                LoginReturnDTO loginReturnDTO = MapEmployeeToLoginReturn(employee);
-                return loginReturnDTO;
-                // }
+                if(userDB.Status =="Active")
+                {
+                    LoginReturnDTO loginReturnDTO = MapEmployeeToLoginReturn(employee);
+                    return loginReturnDTO;
+                 }
 
                 throw new UserNotActiveException("Your account is not activated");
             }

@@ -26,7 +26,8 @@ namespace PizzahutApiApplication.Services
 
             //Payload
             var claims = new List<Claim>(){
-                new Claim(ClaimTypes.Name,customer.Id.ToString())
+                new Claim(ClaimTypes.Name,customer.Id.ToString()),
+                new Claim(ClaimTypes.Role,customer.Role.ToString())
             };
 
             //Header with algorithm and signature

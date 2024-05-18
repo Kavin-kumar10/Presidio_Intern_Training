@@ -36,7 +36,6 @@ namespace PizzahutApiApplication.Controllers
 
         [HttpPost]
         [Route("GetPizzaById")]
-        [Authorize]
         [ProducesResponseType(typeof(Pizza), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel), StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Pizza>> GetPizza(int PizzaId)
@@ -53,7 +52,7 @@ namespace PizzahutApiApplication.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Admin")]
         [ProducesResponseType(typeof(Pizza),StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(ErrorModel),StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Pizza>> AddNewPizza(Pizza pizza)
