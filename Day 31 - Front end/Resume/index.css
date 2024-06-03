@@ -1,0 +1,54 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 10px 100px;
+}
+
+.center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px 0px;
+}
+
+.center h1{
+    padding: 12px;
+}
+
+.center h3{
+    margin: 30px 0px;
+}
+
+
+.contain{
+    width: 100%;
+    margin: 30px 0px;
+}
+
+.contain p{
+    margin: 10px 0px;
+}
+
+.contain h1{
+    display: flex;
+    align-items: flex-start;
+    font-size: 20px;
+}
+.contain ul li{
+    display: flex;
+    align-self: flex-start;
+    margin: 10px 0px;
+}
+
+.line{
+    height: 3px;
+    width: 100%;
+    margin: 5px 0px;
+    background-color: black;
+}

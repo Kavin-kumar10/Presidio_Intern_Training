@@ -1,0 +1,30 @@
+SOLID 
+
+S -> Single Responsiblity
+
+Dont include that is not necessary
+
+
+O - > OPEN AND CLOSE
+
+Open for Inheritance -> override with virtual
+Close for Change in class
+
+L -> Liskov substitution principle
+
+Inherited class should not add new attribute but it can override functions through virtual [Open and Close]
+
+-> when child object is replaced by parent object it should work fine
+ex: loginEmployeeDTO = employee // should work
+
+I -> Interface segregation
+
+Do not leave a method unimplemented
+can provide inherited interface 
+
+interface - abstract class - concrete class
+
+D -> Dependency inversion
+
+<IRepository<int,Product>,ProductRepository>(); --> Dependency inversion --> Good Practice
+<ProductRepositor>(); -> Dependency Injection
