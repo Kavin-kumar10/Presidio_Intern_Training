@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./src/output.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-Primary overflow-x-hidden flex flex-col items-center">
+
+    <!-- Navbar -->
+
+    <Nav class="flex justify-between p-10 bg-Primary h-10 fixed top-0 left-0 w-full z-0">
+      <img class="h-10 w-auto" src="./Assets/Logo.png" alt="Logo">
+      <ul class="flex gap-8 text-Secondary">
+        <li class="hover:text-white cursor-pointer"><a href="#Home">Home</a></li>
+        <li class="hover:text-white cursor-pointer"><a href="#About">About</a></li>
+        <li class="hover:text-white cursor-pointer"><a href="#Projects">Projects</a></li>
+      </ul>
+    </Nav>
+
+    <!-- Home -->
+
+    <div id="Home" class="Landpage h-screen flex justify-center items-center flex-col text-7xl">
+      <h1 data-aos="zoom-in-up" data-aos-duration="1000" class="text-stone-200 m-10">Website <span class="text-Tertiary">Dev</span> & <span class="text-Tertiary">Design</span></h1>
+      <h3 data-aos="zoom-in-up" data-aos-duration="2000" class="text-stone-200 text-4xl">kavin kumar M</h3>
+    </div>
+
+    <!-- About -->
+
+    <div id="About" class="p-10 h-screen w-full flex justify-center items-center">
+      <div class="flex basis-1/2 h-full items-center justify-center">
+        <img data-aos="fade-right" data-aos-duration="2000" data-aos-anchor-placement="top-bottom" height="400px" width="400px" src="./Assets/pic.png" alt="">
+      </div>
+      <div class="flex flex-col basis-1/2 h-full justify-center">
+        <h1 data-aos="fade-left" data-aos-duration="2000" class="text-5xl text-stone-200 py-10">Wanna <span class="text-Tertiary">Know me</span>?</h1>
+        <p data-aos="fade-left" data-aos-duration="2000" class="text-xl w-2/3 text-stone-200">Dedicated and passionate MERN Developer specializing in React.js front-end development, eager to
+          leverage technical proficiency and relentless pursuit of learning to drive innovative solutions</p>
+      </div>
+    </div>
+
+    <!-- Projects -->
+
+    <div id="Projects" class="Projects w-3/4 p-10 flex justify-center flex-col items-center">
+      <h1 class="text-stone-200 text-6xl z-10"><span class="text-Tertiary">Pro</span>jects</h1>
+      <div class="w-32 rounded-md h-1.5 bg-stone-200 mt-5 mb-20"></div>
+      <div class="Container grid grid-cols-3 gap-10">
+        <div class="Project cursor-pointer w-full bg-stone-200 p-5 rounded-md">
+          <img class="mb-5" src="./Assets/Project1.png" alt="Portfolio">
+          <h1 class="text-2xl text-Tertiary font-bold">Portfolio</h1>
+          <h2 class="mb-5 opacity-50">Describes my own profile</h2>
+          <h2>Role : Front End Development</h2>
+          <h2 class="mb-5">Techstack : React, scss, Aos, Gsap</h2>
+          <a class="text-blue-950 text-md font-normal" target="_blank" href="https://kavin-kumar10.github.io/MyPortfolio/">visit -></a>
+        </div>
+        <div class="Project cursor-pointer w-full bg-stone-200 p-5 rounded-md">
+          <img class="mb-5" src="./Assets/Project2.PNG" alt="Ecommerce">
+          <h1 class="text-2xl text-Tertiary font-bold">Ecommerce</h1>
+          <h2 class="mb-5 opacity-50">Describes shopping site</h2>
+          <h2>Role : Full stack Development</h2>
+          <h2 class="mb-5">Techstack : React, Express, Cloudinary, Mongodb, scss, Gsap</h2>
+          <a class="text-blue-950 text-md font-normal" target="_blank" href="https://kavin-kumar10.github.io/Ecommerce/">visit -></a>
+        </div>
+        <div class="Project cursor-pointer w-full bg-stone-200 p-5 rounded-md">
+          <img class="mb-5" src="./Assets/Project1.png" alt="Portfolio">
+          <h1 class="text-2xl text-Tertiary font-bold">Portfolio</h1>
+          <h2 class="mb-5 opacity-50">Describes my own profile</h2>
+          <h2>Role : Front End Development</h2>
+          <h2 class="mb-5">Techstack : React, scss,Gsap</h2>
+          <a class="text-blue-950 text-md font-normal" target="_blank" href="https://kavin-kumar10.github.io/MyPortfolio/">visit -></a>
+        </div>
+
+      </div>
+    </div>
+    
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
