@@ -755,6 +755,10 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-44 {
+  margin-top: 11rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -972,6 +976,20 @@ video {
 
 .transform-none {
   transform: none;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1,1);
+  }
+
+  50% {
+    transform: scale(0.8,0.8);
+  }
+}
+
+.animate-beat {
+  animation: beat 5s ease-in-out infinite;
 }
 
 .cursor-pointer {
@@ -2725,24 +2743,12 @@ body::-webkit-scrollbar {
     height: 1.75rem;
   }
 
-  .md\:w-2\/3 {
-    width: 66.666667%;
-  }
-
   .md\:w-3\/5 {
     width: 60%;
   }
 
-  .md\:w-full {
-    width: 100%;
-  }
-
   .md\:flex-row {
     flex-direction: row;
-  }
-
-  .md\:p-10 {
-    padding: 2.5rem;
   }
 
   .md\:text-2xl {
