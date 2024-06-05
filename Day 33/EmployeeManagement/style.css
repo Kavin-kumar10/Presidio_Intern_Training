@@ -1,0 +1,113 @@
+*{
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body{
+    background-color:#3D3D3F;
+    color: white;
+    overflow-x: hidden;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 30px 0px;
+}
+nav span{
+    padding: 5px 10px;
+    margin-right: 5px;
+    border-radius: 12px;
+}
+nav span a{
+    color: white;
+    padding: 10px 5px;
+    text-decoration: none;
+    opacity: 50%;
+}
+nav span a:hover{
+    opacity: 100%;
+}
+
+/* Home */
+
+.Home_body{
+    padding: 20px;
+}
+.Home_header{
+    padding: 20px 0px;
+}
+
+/* Employee */
+
+.Emp{
+    display: flex;
+    flex-direction: column;
+    width:100%;
+    border: 2px solid white;
+    margin: 30px;
+    padding: 20px;
+}
+
+.Employee_contain{
+    display: flex;
+    width: 100%;
+    padding: 20px;
+}
+
+.Emp h2{
+    margin: 10px 0px;
+}
+.Emp p{
+    margin: 10px 0px;
+}
+
+
+
+.AddEmployee{
+    padding: 20px;
+    background-color: white;
+    color: black;
+}
+
+.Form_contain{
+    display: flex;
+    flex-direction: column;
+}
+
+.Form_contain h2{
+    margin: 20px 0px;
+}
+form>*{
+    margin: 10px 0px;
+}
+form div{
+    display: flex;
+    justify-content: space-between;
+    width: 30vw;
+}
+
+form div>label{
+    height: 30px;
+}
+
+form div>input{
+    width: 200px;
+    padding: 5px;
+    height: 30px;
+}
+
+form div button{
+
+    border-radius:4px;
+    outline: none;
+    border: 1px solid grey;
+    padding: 8px 20px;
+}
+form div button:hover{
+    transition: all 0.3s linear;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+}
