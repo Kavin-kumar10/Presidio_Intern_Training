@@ -1,0 +1,52 @@
+@import './variables.scss';
+
+@mixin centering($align,$justify){
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// method
+
+@mixin mycolor($type){
+    color: if($type == pass,green,red)
+}
+
+// each loop
+
+@each $type,$bcolor,$fcolor in (danger,pink,red),(primary,lightblue,royalblue)
+,(success,lightgreen,green){
+    .#{$type}{
+        background-color:$bcolor;
+        color: $fcolor;
+    }
+}
+
+//for loop
+
+@for $i from 1 to 5{
+    .d#{$i}{
+        width: 100px;
+        position: absolute;
+        left: $i*100px;
+        top:600px;
+        float: left;
+        background-color: white;
+        margin: 2px;
+        border: 2px solid black;
+    }
+}
+
+div{
+    @include centering('start','center');
+    background-color: $primary-color;
+    height: 100px;
+    width:100%;
+    h1{
+        //@include mycolor(fail);
+    }
+}
+
+section{
+    background-color: $bodyColor;
+}

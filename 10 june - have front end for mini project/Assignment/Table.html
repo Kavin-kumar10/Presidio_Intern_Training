@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <link rel="stylesheet" href="./output.css">
+    <link rel="stylesheet" href="./input.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body class="h-screen w-screen flex items-center justify-center">
+    <div class="w-5/6 h-5/6 rounded-md p-3 shadow-sm shadow-gray-700 overflow-y-scroll">
+        <div class="top flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="px-5 py-2 mx-5 rounded border-none shadow-sm shadow-gray-700"><i class="fa-solid fa-filter"></i></div>
+                <input class="px-5 py-2 rounded outline-none border-none shadow-sm shadow-gray-700" placeholder="Search" type="text">
+            </div>
+            <button class="px-5 py-2 bg-blue-800 text-white rounded border-none">+ Add customer</button>
+        </div>
+        <table class="w-full text-black mt-2 text-center border-separate border-spacing-y-4">
+            <thead class="bg-[#F7F9FD] opacity-75 h-20">
+                <th class="p-1"><input type="checkbox"></th>
+                <th>#</th>
+                <th>NAME</th>
+                <th class="w-72">DESCRIPTION</th>
+                <th>STATUS</th>
+                <th>RATE</th>
+                <th>BALANCE</th>
+                <th>DEPOSIT</th>
+            </thead>
+            <tbody>
+                <tr class="cursor-pointer">
+                    <td><input type="checkbox"></td>
+                    <td>1</td>
+                    <td>
+                        <div class="px-10 flex flex-col text-start">
+                            <span>KAVIN KUMAR M</span>
+                            <span class="opacity-50">9876546782</span>
+                        </div>
+                    </td>
+                    <td class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, eum!</td>
+                    <td><span class="rounded-xl bg-slate-100 px-3 py-1 text-blue-500">open</span></td>
+                    <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$70</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>-$250</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$500</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                
+                </tr>
+                <tr class="hover:bg-[#F7F9FD] cursor-pointer">
+                    <td><input type="checkbox"></td>
+                    <td>2</td>
+                    <td>
+                        <div class="px-10 flex flex-col text-start">
+                            <span>PRAVIN KUMAR M</span>
+                            <span class="opacity-50">9876546782</span>
+                        </div>
+                    </td>
+                    <td class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, eum!</td>
+                    <td><span class="rounded-xl bg-slate-100 px-3 py-1 text-blue-500">open</span></td>
+                    <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$20</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>-$150</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$300</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                
+                </tr>
+                <tr class="hover:bg-[#F7F9FD] cursor-pointer">
+                    <td><input type="checkbox"></td>
+                    <td>3</td>
+                    <td>
+                        <div class="px-10 flex flex-col text-start">
+                            <span>ROHAN</span>
+                            <span class="opacity-50">9876546782</span>
+                        </div>
+                    </td>
+                    <td class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, eum!</td>
+                    <td><span class="rounded-xl bg-slate-100 px-3 py-1 text-green-500">Paid</span></td>
+                    <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$120</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>-$450</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$350</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                
+                </tr>
+                <tr class="hover:bg-[#F7F9FD] cursor-pointer">
+                    <td><input type="checkbox"></td>
+                    <td>4</td>
+                    <td>
+                        <div class="px-10 flex flex-col text-start">
+                            <span>ROHITH</span>
+                            <span class="opacity-50">9876546782</span>
+                        </div>
+                    </td>
+                    <td class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, eum!</td>
+                    <td><span class="rounded-xl bg-slate-100 px-3 py-1 text-gray-500">Inactive</span></td>
+                    <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$10</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>-$150</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$350</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                
+                </tr>
+                <tr class="hover:bg-[#F7F9FD] cursor-pointer">
+                    <td><input type="checkbox"></td>
+                    <td>5</td>
+                    <td>
+                        <div class="px-10 flex flex-col text-start">
+                            <span>SOUNDER</span>
+                            <span class="opacity-50">9876546782</span>
+                        </div>
+                    </td>
+                    <td class="text-start">Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, eum!</td>
+                    <td><span class="rounded-xl bg-slate-100 px-3 py-1 text-green-500">Paid</span></td>
+                    <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$120</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>-$450</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                    
+                     <td>
+                        <div class="flex flex-col w-3/4 text-end">
+                            <span>$350</span>
+                            <span class="opacity-50">CAD</span>
+                        </div>
+                     </td>                
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

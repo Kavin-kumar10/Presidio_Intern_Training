@@ -1,0 +1,70 @@
+.danger {
+  background-color: pink;
+  color: red;
+}
+
+.primary {
+  background-color: lightblue;
+  color: royalblue;
+}
+
+.success {
+  background-color: lightgreen;
+  color: green;
+}
+
+.d1 {
+  width: 100px;
+  position: absolute;
+  left: 100px;
+  top: 600px;
+  float: left;
+  background-color: white;
+  margin: 2px;
+  border: 2px solid black;
+}
+
+.d2 {
+  width: 100px;
+  position: absolute;
+  left: 200px;
+  top: 600px;
+  float: left;
+  background-color: white;
+  margin: 2px;
+  border: 2px solid black;
+}
+
+.d3 {
+  width: 100px;
+  position: absolute;
+  left: 300px;
+  top: 600px;
+  float: left;
+  background-color: white;
+  margin: 2px;
+  border: 2px solid black;
+}
+
+.d4 {
+  width: 100px;
+  position: absolute;
+  left: 400px;
+  top: 600px;
+  float: left;
+  background-color: white;
+  margin: 2px;
+  border: 2px solid black;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #101010;
+  height: 100px;
+  width: 100%;
+}
+section {
+  background-color: pink;
+}/*# sourceMappingURL=style.css.map */

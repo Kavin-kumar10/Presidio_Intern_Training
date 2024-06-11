@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+.input_box{
+    @apply border-2 border-white flex p-2 my-3 rounded flex items-center justify-start w-full
+}
+
+.input_tag{
+    @apply border-none bg-transparent text-white ml-3 outline-none
+}
+
+.Form_body{
+    background-color: #2148c0;
+}
+
+.Form_form{
+    background: url('./Assets/BG.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+.Banner_body{
+    background: url("./Assets/Banner.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-attachment: fixed;
+    height: 100vh;
+    width: 100vw;
+}

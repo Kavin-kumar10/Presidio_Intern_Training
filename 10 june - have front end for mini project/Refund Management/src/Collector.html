@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collector</title>
+    <link rel="stylesheet" href="./output.css">
+</head>
+<body class="p-8 bg-primary">
+    <nav class="flex justify-between items-center h-20 mb-10">
+        <img class="w-10 h-auto" src="./Assets/Logo.png" alt="Logo">
+        <h1 class="text-secondary text-xl">Collector</h1>
+    </nav>
+    <div class="flex">
+        <button class="px-4 py-2 text-tertiary bg-secondary rounded-md">Pendings</button>
+        <input class="p-2 bg-transparent text-secondary ml-5 border-2 border-secondary rounded-md outline-none w-40 lg:w-64" placeholder="Search ..." type="text">
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-10 gap-5">
+        <div class="Card shadow-sm shadow-secondary p-3 rounded-md">
+            <h1 class="font-bold pb-5 text-2xl text-secondary">Order Id : 01</h1>
+            <p class="p-1 mt-1 w-2/5 rounded-lg bg-tertiary text-secondary flex items-center justify-center shadow-sm shadow-secondary">Initiated</p>
+            <br>
+            <p class="font-semibold text-secondary opacity-50">Product Id : 01</p>
+            <p class="font-semibold text-secondary opacity-50">Member Id : 118</p>
+            <p class="font-semibold text-secondary opacity-50">Total Price : $899</p>
+            <br>
+            <div class="flex gap-5">
+                <button class="px-5 py-1 border-2 border-secondary bg-secondary text-tertiary rounded-md hover:bg-tertiary hover:text-secondary duration-500">Accept</button>
+                <button class="px-5 py-1 border-2 border-secondary rounded-md text-secondary">Decline</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
