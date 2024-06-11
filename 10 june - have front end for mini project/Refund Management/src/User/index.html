@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../output.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body class="body_css">
+    <nav class="flex items-center justify-between px-5 sm:px-10 md:px-20 lg:px-28 py-10 h-20 fixed top-0 left-0 w-full z-50 bg-primary">
+        <img class="h-5 md:h-7 lg:h-10 w-auto" src="../Assets/Logo.png" alt="Logo">
+        <ul class="flex justify-between items-center">
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-10 hidden md:block">
+                <a href="./index.html">Home</a>
+            </li>
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-10 block md:hidden">
+                <a href="./index.html"><i class="fa-solid fa-house"></i></a>
+            </li>
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-10 hidden md:block">
+                <a href="./Ordered.html">Ordered</a>
+            </li>
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-10 block md:hidden">
+                <a href="./Ordered.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            </li>
+            
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg  hidden md:block">
+                <a href="./Refund.html">Refund</a>
+            </li>
+            <li class="text-secondary opacity-70 hover:opacity-100 text-lg  block md:hidden">
+                <a href="./Refund.html"><i class="fa-solid fa-right-left"></i></a>
+            </li>
+            
+        </ul>
+    </nav>
+    <section class="flex items-center justify-center h-screen w-full z-0 flex-col-reverse lg:flex-row">
+        <div class="w-full h-2/3 lg:w-2/3 lg:h-full">
+            <div class="flex items-center justify-center flex-col h-full">
+                <h1 class="text-3xl md:text-4xl mb-4 md:mb-10  font-bold text-secondary">Find the Best Products with Unbelievable discounts</h1>
+                <h3 class="text-md md:text-xl text-secondary mb-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas cum hic facilis esse fugit aspernatur sapiente ab ut sed quasi.</h3>
+                <button class="flex self-start px-10 py-2 rounded-md border-2 border-secondary bg-secondary text-primary">Explore</button>
+            </div>
+        </div>
+        <div class="w-full h-1/3 mt-32 lg:mt-0 lg:w-2/3 lg:h-full flex items-center justify-start lg:justify-end">
+            <img class="w-auto h-full lg:w-1/2 lg:h-auto" src="../Assets/Logo.png" alt="logo">
+        </div>
+    </section>
+    <section class="h-screen w-full">
+        <h1 class="text-3xl text-secondary py-5">Featured Products</h1>
+        <div class="w-full h-1 bg-secondary"></div>
+        <div class="container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <a href="Product.html" class="flex flex-col w-full p-5 shadow-md shadow-secondary cursor-pointer hover:shadow-lg hover:shadow-secondary">
+                <img class="w-full h-full mb-2" src="../Assets/Product.jpg" alt="Product">
+                <h1 class="text-3xl mb-2">Boat Boomset</h1>
+                <h2 class="text-white w-fit px-2 py-1 my-2 rounded-md bg-red-800">Limited time deal</h2>
+                <h2 class="text-md text-green-500 mb-2"><b class="text-lg">$200</b> <s class="text-red-800 opacity-50 text-sm">$420</s></h2>
+                <p class="opacity-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore ad aspernatur.</p>
+            </a>
+        </div>
+    </section>
+</body>
+</html>
