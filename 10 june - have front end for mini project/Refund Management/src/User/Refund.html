@@ -6,6 +6,16 @@
     <title>Refund</title>
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script>
+        const togglepop = ()=>{
+            const popElement = document.getElementById("pop");
+                if (popElement.style.display === "none") {
+                    popElement.style.display = "flex";
+                } else {
+                    popElement.style.display = "none";
+                }
+        }
+    </script>
 </head>
 <body class="body_css pt-32">
     <nav class="flex items-center justify-between px-5 sm:px-10 md:px-20 lg:px-28 py-10 h-20 fixed top-0 left-0 w-full z-50 bg-primary">
@@ -33,7 +43,17 @@
             
         </ul>
     </nav>
-    <h1 class="font-bold text-3xl text-secondary">Refund Requests</h1>
+    <div id="pop" class="h-screen w-full fixed top-0 left-0 flex items-center justify-center bg-tertiary bg-opacity-50 hidden">
+        <div class="box p-5 rounded-md shadow-md shadow-secondary bg-opacity-100 bg-tertiary">
+            <h1 class="bg-secondary text-tertiary p-2 rounded-md mb-5">Payment Details</h1>
+            <p>Transaction Id : falsk-asdfas-adfsdf-adfsdf</p>
+            <p>Type : NEFT</p>
+            <p>Date : 15th June 2024</p>
+            <p>Refund Amount : $250</p>
+            <button onclick="togglepop()" class="px-5 py-2 mt-3 flex items-center justify-center rounded-md bg-secondary text-tertiary">Close</button>
+        </div>
+    </div>
+    <h1 class="font-bold text-3xl text-secondary w-full">Refund Requests</h1>
     <br>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
         <div class="p-5 shadow-md shadow-secondary flex items-start justify-between flex-col">
@@ -42,7 +62,7 @@
             <h2 class="text-md">Created at : 11th June 2024</h2>
             <h2 class="text-md">Status: <span class="text-green-600">Completed</span></h2>
             <h2 class="text-md text-red-700">Reason: Damaged</h2>
-            <button class="bg-secondary w-full text-tertiary p-3 mt-5 hover:bg-primary hover:text-secondary border-2 border-secondary hover:duration-500">Payment Details</button>
+            <button onclick="togglepop()" class="bg-secondary w-full text-tertiary p-3 mt-5 hover:bg-primary hover:text-secondary border-2 border-secondary hover:duration-500">Payment Details</button>
         </div>
         <div class="p-5 shadow-md shadow-secondary flex items-start justify-between flex-col">
             <img class="w-full h-1/2" src="../Assets/Product.jpg" alt="Product">

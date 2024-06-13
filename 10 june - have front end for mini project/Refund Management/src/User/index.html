@@ -6,6 +6,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="body_css">
     <nav class="flex items-center justify-between px-5 sm:px-10 md:px-20 lg:px-28 py-10 h-20 fixed top-0 left-0 w-full z-50 bg-primary">
@@ -36,20 +37,20 @@
     <section class="flex items-center justify-center h-screen w-full z-0 flex-col-reverse lg:flex-row">
         <div class="w-full h-2/3 lg:w-2/3 lg:h-full">
             <div class="flex items-center justify-center flex-col h-full">
-                <h1 class="text-3xl md:text-4xl mb-4 md:mb-10  font-bold text-secondary">Find the Best Products with Unbelievable discounts</h1>
-                <h3 class="text-md md:text-xl text-secondary mb-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas cum hic facilis esse fugit aspernatur sapiente ab ut sed quasi.</h3>
-                <button class="flex self-start px-10 py-2 rounded-md border-2 border-secondary bg-secondary text-primary">Explore</button>
+                <h1 data-aos = "fade-up" data-aos-duration="1000" class="text-3xl md:text-4xl mb-4 md:mb-10  font-bold text-secondary">Find the Best Products with Unbelievable discounts</h1>
+                <h3 data-aos = "fade-up" data-aos-duration="2000" class="text-md md:text-xl text-secondary mb-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas cum hic facilis esse fugit aspernatur sapiente ab ut sed quasi.</h3>
+                <button data-aos = "fade-up" data-aos-duration="3000" class="flex self-start px-10 py-2 rounded-md border-2 border-secondary bg-secondary text-primary">Explore</button>
             </div>
         </div>
-        <div class="w-full h-1/3 mt-32 lg:mt-0 lg:w-2/3 lg:h-full flex items-center justify-start lg:justify-end">
+        <div data-aos="zoom-in" data-aos-duration = "1000" class="w-full h-1/3 mt-32 lg:mt-0 lg:w-2/3 lg:h-full flex items-center justify-start lg:justify-end">
             <img class="w-auto h-full lg:w-1/2 lg:h-auto" src="../Assets/Logo.png" alt="logo">
         </div>
     </section>
     <section class="h-screen w-full">
-        <h1 class="text-3xl font-bold text-secondary py-5">Featured Products</h1>
+        <h1 data-aos="zoom-in-right" class="text-3xl font-bold text-secondary py-5">Featured Products</h1>
         <div class="w-full h-1 bg-secondary"></div>
         <div class="container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <a href="Product.html" class="flex flex-col w-full p-5 shadow-md shadow-secondary cursor-pointer hover:shadow-lg hover:shadow-secondary">
+            <a data-aos = "fade-up" data-aos-duration="1000" href="Product.html" class="flex flex-col w-full p-5 shadow-md shadow-secondary cursor-pointer hover:shadow-lg hover:shadow-secondary">
                 <img class="w-full h-full mb-2" src="../Assets/Product.jpg" alt="Product">
                 <h1 class="text-3xl mb-2">Boat Boomset</h1>
                 <h2 class="text-white w-fit px-2 py-1 my-2 rounded-md bg-red-800">Limited time deal</h2>
@@ -58,5 +59,9 @@
             </a>
         </div>
     </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>
