@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../Assets/Logo.png">
+    <script defer src="./index.js"></script>
 </head>
 <body class="body_css">
     <nav class="flex items-center justify-between px-5 sm:px-10 md:px-20 lg:px-28 py-10 h-20 fixed top-0 left-0 w-full z-50 bg-primary">
@@ -49,13 +51,13 @@
     <section class="h-screen w-full">
         <h1 data-aos="zoom-in-right" class="text-3xl font-bold text-secondary py-5">Featured Products</h1>
         <div class="w-full h-1 bg-secondary"></div>
-        <div class="container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            <a data-aos = "fade-up" data-aos-duration="1000" href="Product.html" class="flex flex-col w-full p-5 shadow-md shadow-secondary cursor-pointer hover:shadow-lg hover:shadow-secondary">
+        <div id="products_container" class="container my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <a id="product" data-aos = "fade-up" data-aos-duration="1000" href="Product.html" class="flex flex-col w-full p-5 shadow-md shadow-secondary cursor-pointer hover:shadow-lg hover:shadow-secondary">
                 <img class="w-full h-full mb-2" src="../Assets/Product.jpg" alt="Product">
                 <h1 class="text-3xl mb-2">Boat Boomset</h1>
                 <h2 class="text-white w-fit px-2 py-1 my-2 rounded-md bg-red-800">Limited time deal</h2>
                 <h2 class="text-md text-green-500 mb-2"><b class="text-lg">$200</b> <s class="text-red-800 opacity-50 text-sm">$420</s></h2>
-                <p class="opacity-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore ad aspernatur.</p>
+                <p class="opacity-70">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore ad aspernatur.</p>
             </a>
         </div>
     </section>

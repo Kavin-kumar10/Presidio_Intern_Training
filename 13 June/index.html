@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Table add</title>
+  <link href="./output.css" rel="stylesheet">
+  <script defer src="./index.js"></script>
+</head>
+<body>
+    <form id="form" action="/" class="w-1/3 flex flex-col gap-5 p-5 m-5 shadow-md shadow-gray-800 rounded-md" action="">
+        <div class="flex gap-10 justify-between">
+            <label for="Id">Id</label>
+            <div class="flex flex-col">
+                <input id="Id" type="number" name="Id" class="px-5 py-2 shadow-sm shadow-gray-600 outline-none">
+                <p id="errorId" class="text-red-400 mt-1 hidden">id column missing</p>
+            </div>
+        </div>
+        <div class="flex gap-10 justify-between">
+            <label for="Name">Name</label>
+            <div class="flex flex-col">
+                <input id="Name" name="Name" type="text" class="px-5 py-2 shadow-sm shadow-gray-600 outline-none">
+                <p id="errorName" class="text-red-400 mt-1 hidden">Name column missing</p>
+            </div>
+        </div>
+        <div class="flex gap-10 justify-between">
+            <label for="Price">Price</label>
+            <div class="flex flex-col">
+                <input id="Price" name="Price" type="text" class="px-5 py-2 shadow-sm shadow-gray-600 outline-none">
+                <p id="errorPrice" class="text-red-400 mt-1 hidden">Price column missing</p>
+            </div>
+        </div>
+        <div class="flex gap-10 justify-between">
+            <label for="Quantity">Quantity</label>
+            <div class="flex flex-col">
+                <input id="Quantity" name="Quantity" type="number" class="px-5 py-2 shadow-sm shadow-gray-600 outline-none">
+                <p id="errorQuantity" class="text-red-400 mt-1 hidden">Quantity column missing</p>
+            </div>
+        </div>
+        <div class="flex gap-10 justify-between">
+           <button type="submit" class="bg-red-950 px-10 py-2 border-2 border-red-950 text-white">Create</button>
+           <button type="reset" class="text-red-950 px-10 py-2 border-2 border-red-950">Reset</button>
+        </div>
+    </form>
+    <table class="w-1/3 m-5">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody id="tablebody">
+            <tr>
+                <td>1</td>
+                <td>Product 1</td>
+                <td>$10.00</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Product 2</td>
+                <td>$15.00</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Product 3</td>
+                <td>$20.00</td>
+                <td>3</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
