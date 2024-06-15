@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
-    <script defer src="./Product.js"></script>
+    <script defer src="index.js"></script>
+    <script>
+        window.onload = async()=> await getProductDetails();
+    </script>
     <link rel="stylesheet" href="../output.css">
     <link rel="icon" type="image/x-icon" href="../Assets/Logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
@@ -35,8 +38,8 @@
             
         </ul>
     </nav>
-    <div class="h-full w-full flex flex-col lg:flex-row">
-        <div class="image h-1/2 w-full lg:w-1/2 lg:h-full lg:p-20 flex items-center justify-center">
+    <div id="productinfo" class="h-full w-full flex flex-col lg:flex-row">
+        <!-- <div class="image h-1/2 w-full lg:w-1/2 lg:h-full lg:p-20 flex items-center justify-center">
             <img id="productImg" class="w-auto h-full lg:w-full lg:h-auto" src="../Assets/Product.jpg" alt="image">
         </div>
         <div id="productDetail" class="h-1/2 w-full lg:w-1/2 lg:h-full flex justify-center flex-col">
@@ -46,7 +49,7 @@
             <p class="opacity-50 mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam tempore ad aspernatur.</p>
             <p class="text-secondary">Returnable upto 7 Days <span class="text-green-900 font-bold">(14 days exclusive for prime)</span></p>
             <button class="flex self-start mt-5 rounded-sm px-5 py-2 shadow-sm shadow-secondary bg-secondary text-tertiary">Place Order</button>
-        </div>
+        </div> -->
     </div>
 </body>
 </html>

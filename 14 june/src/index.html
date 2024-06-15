@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration</title>
+  <link href="./output.css" rel="stylesheet">
+  <script src="index.js"></script>
+</head>
+<body class="h-screen w-screen flex ">
+    <div class="w-1/2 h-full bg-primary">
+    </div>
+    <div class="w-1/2 h-full p-5 flex flex-col items-start">
+        <h1 class="text-3xl text-primary font-bold my-5">Register</h1>
+        <form action=""  class="w-full gap-2 py-5 rounded-md">
+
+            <!-- 1st row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-5">
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between">
+                        <label class="opacity-50" for="Name">Username</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <input class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="text" id="Name">
+                </div>
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between">
+                        <label class="opacity-50" for="phone">Mobile No</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <input class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="number" id="phone">
+                </div>
+            </div>
+
+            <!-- 2nd row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-5">
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between">
+                        <label class="opacity-50" for="email">Email</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <input class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="email" id="email">
+                </div>
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between">
+                        <label class="opacity-50" for="dob">Date of Birth</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <input class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="date" id="dob">
+                </div>
+            </div>
+
+            <!-- 3rd row -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 lg:gap-5">
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between mb-3">
+                        <label class="opacity-50" for="gender">gender</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <label for="male">Male</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <br>
+                        <label for="female">Female</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <br>
+                        <label for="other">Others</label>
+                        <input type="radio" id="other" name="gender" value="other">
+                    </div>
+                </div>
+                <div class="flex flex-col mb-3">
+                    <div class="flex justify-between mb-3">
+                        <label class="opacity-50" for="graduate">Engineer Graduate</label>
+                        <p class="invisible">Error</p>
+                    </div>
+                    <div class="flex justify-between">
+                        <label for="graduate">Graduated</label>
+                        <input  type="checkbox" id="graduate">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 4th row -->
+
+        </form>
+    </div>
+</body>
+</html>
