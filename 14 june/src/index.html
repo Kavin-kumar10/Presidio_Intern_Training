@@ -7,10 +7,10 @@
   <link href="./output.css" rel="stylesheet">
   <script src="index.js"></script>
 </head>
-<body class="h-screen w-screen flex ">
-    <div class="w-1/2 h-full bg-primary">
+<body class="h-screen w-screen flex overflow-x-hidden">
+    <div class="hidden md:block w-1/2 h-full bg-primary">
     </div>
-    <div class="w-1/2 h-full p-5 flex flex-col items-start">
+    <div class="w-full md:w-1/2 h-full p-5 flex flex-col items-start">
         <h1 class="text-3xl text-primary font-bold my-5">Register</h1>
         <form action=""  class="w-full gap-2 py-5 rounded-md">
 
@@ -81,6 +81,10 @@
             </div>
             
             <!-- 4th row -->
+            <div class="flex justify-between">
+                <button type="reset" class="px-5 py-2 text-secondary border-2 border-secondary">Reset</button>
+                <button type="submit" class="px-5 py-2 text-white border-2 border-secondary bg-secondary">Submit</button>
+            </div>
 
         </form>
     </div>
