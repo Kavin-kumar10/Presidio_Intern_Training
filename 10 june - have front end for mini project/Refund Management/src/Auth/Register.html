@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration</title>
   <link href="../output.css" rel="stylesheet">
-  <script defer src="../index.js"></script>
+  <script defer src="./Register.js"></script>
+  <script>
+    if(localStorage.getItem('RefundApp')){
+        window.location.href = "../User/index.html"
+    }
+  </script>
 </head>
 <body class="h-screen w-screen flex">
     <div class=" w-1/2 h-full bg-secondary hidden sm:flex items-center justify-center ">
