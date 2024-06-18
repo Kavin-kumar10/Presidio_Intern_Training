@@ -17,6 +17,7 @@ const handleLogin = async(e) =>{
         let response = await fetch('http://localhost:5018/api/User/Login',options)
         let result = await response.json();
         localStorage.setItem('RefundApp',JSON.stringify(result));
+        window.location.href = "/src/User/index.html"
     }
     catch(err){
         console.log(err);
