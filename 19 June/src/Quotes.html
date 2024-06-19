@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./Assets/logo-light.png" type="image/x-icon">
+    <title>Quotes</title>
+    <link rel="stylesheet" href="./output.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <script src="./index.js"></script>
+</head>
+<body class="bg-primary pt-28">
+    <nav class="px-10 py-8 w-full fixed top-0 left-0 bg-primary text-secondary flex justify-between items-center">
+        <img class="h-10" src="./Assets/logo-light.png" alt="Logo">
+        <ul class="w-20 md:w-40 flex justify-between items-center">
+            <a class="hidden md:block" href="./index.html">Home</a>
+            <a class="block md:hidden" href="./index.html"><i class="fa-solid fa-house"></i></a>
+            <a class="hidden md:block bg-secondary rounded-md text-primary px-5 font-bold py-2" href="./Quotes.html">Quotes</a>
+            <a class="block md:hidden bg-secondary rounded-md text-primary px-3 font-bold py-1" href="./Quotes.html"><i class="fa-solid fa-quote-right"></i></a>
+        </ul>
+    </nav>
+    <div class="flex flex-col m-5">
+        <ul class="flex px-5 py-3 gap-4">
+            <li class="px-3 cursor-pointer py-1 bg-secondary text-primary rounded-sm font-bold">1</li>
+            <li class="px-3 cursor-pointer py-1 bg-secondary text-primary rounded-sm font-bold">2</li>
+            <li class="px-3 cursor-pointer py-1 bg-secondary text-primary rounded-sm font-bold">3</li>
+            <li class="px-3 cursor-pointer py-1 bg-secondary text-primary rounded-sm font-bold">4</li>
+        </ul>
+        <div class="flex mx-5 my-2 gap-5">
+            <p id="asc" class="px-5 py-1 bg-secondary text-primary border-2 border-primary rounded-sm">Asc</p>
+            <p id="desc" class="px-5 py-1 bg-secondary text-primary border-2 border-primary rounded-sm">Desc</p>
+        </div>
+        <input id="searchinput" class="mx-5 w-1/6 my-5 rounded-sm px-3 py-2 outline-none" placeholder="Search author" type="text">
+        <div id="container" class="gap-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-5 ">
+            <div id="template" class="hidden flex-col text-secondary shadow-sm shadow-secondary p-5 rounded-md">
+                <h2 class="font-bold">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam. Facilis, sed voluptates? Corporis</h2>
+                <p class="flex self-end"><i>- Kavin kumar M</i></p>            
+            </div>
+        </div>
+    </div>
+    <script>
+        AOS.init();
+      </script>
+</body>
+</html>
