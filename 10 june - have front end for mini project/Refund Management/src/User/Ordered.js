@@ -12,6 +12,10 @@ $(document).ready(function(){
             dateObject = dateObject.toDateString();
             cloneDiv.find('h1').text(elem.product.title);
             cloneDiv.find('p').html(`Returnable upto ${elem.product.returnable} Days <span class="text-green-900 font-bold">(${elem.product.returnableForPrime} days exclusive for prime)</span> from ${dateObject} - Purchase Date`);
+            if(elem.refundId){
+                cloneDiv.find('#Requested').css("display","block");
+                cloneDiv.find('button').css("display","none");
+            }
             cloneDiv.find('button').click(()=>{
                 handleReasonPop(elem.product.title,elem.orderId);
             })
