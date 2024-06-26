@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <link href="../output.css" rel="stylesheet">
+  
+  
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  
   <script defer src="./login.js"></script>
   
+  <!-- Alert notfy -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
   <script>
     if(localStorage.getItem('RefundApp')){
         window.location.href = "../User/index.html"
@@ -20,16 +27,16 @@
                 <div class="flex flex-col mb-3 w-full md:w-2/3 lg:w-1/2">
                     <div class="flex justify-between">
                         <label class="opacity-50 text-secondary" for="userId">User Id</label>
-                        <p class="invisible">Error</p>
+                        <p id="idError" class="invisible text-red-600 text-sm">Error</p>
                     </div>
-                    <input name="userId" class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="number" id="userId">
+                    <input required name="userId" class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="number" id="userId">
                 </div>
                 <div class="flex flex-col mb-3 w-full md:w-2/3 lg:w-1/2">
                     <div class="flex justify-between">
                         <label class="opacity-50" for="password">Password</label>
-                        <p class="invisible">Error</p>
+                        <p id="passError" class="invisible text-red-600 text-sm">Error</p>
                     </div>
-                    <input name="password" class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="password" id="password">
+                    <input required name="password" class="px-4 py-2 my-1 outline-none rounded-sm shadow-sm shadow-gray-700" type="password" id="password">
                 </div>
                 <div class="flex flex-col mb-3 w-full md:w-2/3 lg:w-1/2">
                     <p class="self-start">Create new account?<a class="text-blue-700" href="Register.html"> Register</a></p>
@@ -46,5 +53,6 @@
             <p class="mt-12 text-2xl text-primary font-semibold opacity-50">Join us for better future</p>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
 </body>
 </html>

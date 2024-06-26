@@ -32,7 +32,8 @@ $(document).ready(function(){
                     "Authorization": `Bearer ${storage.token}`
                 }
             })
-        const jsonData = await response.json();
+        let jsonData = await response.json();
+        jsonData = jsonData.reverse();
         console.log(jsonData);
         createComponents(jsonData);
         } catch (err) {

@@ -4,9 +4,18 @@ const RedirectToLogin = () =>{
     }
 }
 
-const getUserData = () =>{
-    if(localStorage.getItem("RefundApp")){
-        let memberId = JSON.parse(localStorage.getItem("RefundApp")).memberID
+const getUserData = async () =>{
+    try{
+        if(localStorage.getItem("RefundApp")){
+            let memberId = JSON.parse(localStorage.getItem("RefundApp")).memberID;
+            console.log(memberId);
+            let response = await fetch(`http://localhost:5018/api/Member/GetById?memberId=${memberId}`)
+            let result = await response.json();
+            localStorage.setItem("User",JSON.stringify(result));
+        }
+    }
+    catch(err){
+        console.log(err);
     }
 }
 

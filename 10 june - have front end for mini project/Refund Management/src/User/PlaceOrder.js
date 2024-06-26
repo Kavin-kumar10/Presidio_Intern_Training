@@ -1,4 +1,5 @@
 setTimeout(() => {
+    var notyf = new Notyf();
     const handleOrderPlacement = async (event) =>{
         event.preventDefault();
         try{
@@ -19,7 +20,7 @@ setTimeout(() => {
                 body: JSON.stringify(data),
             })
             let result = await response.json();
-            alert(result.orderId);
+            notyf.success(`Your order placed sucessfully with Order Id : ${result.orderId}`);
             console.log(result);
         }
         catch(err){

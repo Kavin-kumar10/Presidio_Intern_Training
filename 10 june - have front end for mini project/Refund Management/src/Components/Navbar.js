@@ -1,41 +1,49 @@
-const fetchNavbar = async () => {
-  try{
-    var NavTemplate = ` <nav class="flex items-center justify-between px-5 sm:px-10 md:px-20 lg:px-28 py-10 h-20 fixed top-0 left-0 w-full z-50 bg-primary">
-        <img class="h-5 md:h-7 lg:h-10 w-auto" src="../Assets/Logo.png" alt="Logo">
-        <ul class="flex justify-between items-center">
-            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-4 md:mr-7 lg:mr-10 hidden md:block">
-                <a href="./index.html">Home</a>
-            </li>
-            <li class="text-secondary opacity-70 hover:opacity-100 text-sm mr-4 md:mr-7 lg:mr-10 block md:hidden">
-                <a href="./index.html"><i class="fa-solid fa-house"></i></a>
-            </li>
-            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-4 md:mr-7 lg:mr-10 hidden md:block">
-                <a href="./Ordered.html">Ordered</a>
-            </li>
-            <li class="text-secondary opacity-70 hover:opacity-100 text-sm mr-4 md:mr-7 lg:mr-10 block md:hidden">
-                <a href="./Ordered.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            </li>
-            <li class="text-secondary opacity-70 hover:opacity-100 text-lg mr-4 md:mr-7 lg:mr-10 hidden md:block">
-                <a href="./Refund.html">Refund</a>
-            </li>
-            <li class="text-secondary opacity-70 hover:opacity-100 text-sm mr-4 md:mr-7 lg:mr-10 block md:hidden">
-                <a href="./Refund.html"><i class="fa-solid fa-right-left"></i></a>
-            </li>
-            <li class="text-primary border-2 bg-secondary rounded-md border-secondary px-4 py-2 hover:opacity-70 opacity-100 text-lg hidden md:block">
-                <a href="/">Kavin Kumar M</a>
-            </li>
-        </ul>
-        
-    </nav>`
-      const body = document.body;
-      const navbarElement = document.createElement('nav');
-      navbarElement.innerHTML = NavTemplate;
-      body.insertBefore(navbarElement, body.firstChild); // Insert before the first child element
-  }
-  catch(err){
-    console.log(err);
-  }
-};
-  
-  fetchNavbar();
-  
+$(document).ready(function() {
+    fetch("../Components/Navbar.html")
+        .then(response => response.text())
+        .then(data => {
+            $("body").prepend(data);
+            let dropdown = $('#dropdown');
+            let info = $('.info')
+            
+            // User Credentials
+            let Credentials = JSON.parse(localStorage.getItem("User"));
+            if(Credentials){
+                console.log("Working");
+                console.log(Credentials);
+                $("#Account").text(Credentials.name);
+                dropdown.find("h1").text(Credentials.name);
+                switch (Credentials.role) {
+                    case 0:
+                        dropdown.find("h2").text("User");
+                        break;
+                    case 1:
+                        dropdown.find("h2").text("Collector");
+                        break;
+                    case 2:
+                        dropdown.find("h2").text("Admin");
+                        break;
+                    
+                    default:
+                        break;
+                }
+            }
+
+            // Dropdown for sign out
+            info.click(() => {
+                if(dropdown.css("display") == "flex")   
+                    dropdown.css("display", "none");
+                else if(dropdown.css("display") == "none")   
+                    dropdown.css("display", "flex");
+            });
+            dropdown.find('button').click(()=>{
+                localStorage.removeItem("RefundApp");
+                localStorage.removeItem("User");
+                window.location.href = "/src/Auth/Login.html";
+            })
+        })
+        .catch(error => {
+            console.error("Error fetching navbar:", error);
+        });
+
+});
