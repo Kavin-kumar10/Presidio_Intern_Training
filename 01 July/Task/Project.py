@@ -59,40 +59,74 @@ def SelectFileType():
         except ValueError:
             print(ValueError)
 
-def pdf_output(employee):
+def pdf_output(employees):
     pdf = FPDF()
     pdf.add_page();
     pdf.set_font("Arial","B",16)
     pdf.write("hello")
-    pdf.write(4,f"""Employee Details \n
-        Employee Name : {employee.Name} \n
-        Employee Dob : {employee.Dob} \n
-        Employee Phone : {employee.Phone} \n
-        Employee mailId : {employee.Email} \n
-        Employee Age : {employee.Age}""")
+    for employee in employees:
+        pdf.write(4,f"""Employee Details \n
+            Employee Name : {employee.Name} \n
+            Employee Dob : {employee.Dob} \n
+            Employee Phone : {employee.Phone} \n
+            Employee mailId : {employee.Email} \n
+            Employee Age : {employee.Age} \n\n\n""")
     pdf.output("file.pdf")
     return 1;
 
-def excel(employee):
+def excel(employees):
     workbook = xlsxwriter.Workbook("Exceldata.xlsx")
     worksheet = workbook.add_worksheet()
     header_format = workbook.add_format({'bold': True}) 
     header = ["#", "Name", "Date of Birth", "Phone", "Email", "Age"]
     worksheet.write_row('A1', header, header_format)
-    first_row = [1,employee.Name,employee.Dob,employee.Phone,employee.Email,employee.Age];
-    worksheet.write_row('A2',first_row)
+    index = 2;
+    for employee in employees:
+        row = [index+1,employee.Name,employee.Dob,employee.Phone,employee.Email,employee.Age];
+        worksheet.write_row(f"A{index}",row)
+        index = index+1
     workbook.close()
+
+def add_employee():
+    print("Create new Employee");
+    newEmployee = GetDetailsFromConsole();
+    return newEmployee;
 
 
 def main():
-    print("Create new Employee");
-    newEmployee = GetDetailsFromConsole();
-    type = SelectFileType()
-    if(type == 1):
-        pdf_output(newEmployee);
-    elif(type == 2):
-        excel(newEmployee);
-
+    Employees = []
+    while True:
+        print("""
+        1. Add new Employee
+        2. show all employee
+        3. Export
+        0. Exit
+        """)
+        choice = int(input("Enter your choice"))
+        if(choice == 1):
+            employee = add_employee();
+            Employees.append(employee);
+        elif(choice == 2):
+            print("Employee Details \n")
+            for employee in Employees:
+                print(f"""
+                Employee Name : {employee.Name} \n
+                Employee Dob : {employee.Dob} \n
+                Employee Phone : {employee.Phone} \n
+                Employee mailId : {employee.Email} \n
+                Employee Age : {employee.Age}""")
+        elif(choice == 3):
+            type = SelectFileType()
+            if(type == 1):
+                pdf_output(Employees);
+            elif(type == 2):
+                excel(Employees);
+        elif(choice == 0):
+            return;
+        else:
+            print("Oops Invalid choice entry ... !")
     print("Stored successfully");
+            
+
 
 main();
