@@ -2,6 +2,8 @@ import React, { useState,useEffect } from "react";
 import Time from "../Components/Time";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Account = () =>{
     const navigate = useNavigate();
@@ -9,6 +11,8 @@ const Account = () =>{
         atmNumber:"",
         pin:""
     })
+    const notify = (err) => toast.error(err)
+
     const handleSubmit = async (e) =>{
         e.preventDefault();
         console.log(data);
@@ -24,11 +28,13 @@ const Account = () =>{
             navigate('/Choice')
         }catch(err){
             console.log(err);
+            notify(err.response.data);
         }
     }
     return(
         <div className="Account bg-primary h-screen flex items-center flex-col justify-center">
             <Time/>
+            <ToastContainer/>
             <div className="flex flex-col gap-10">
                 <h1 className="text-secondary font-bold text-xl sm:text-3xl md:text-5xl">Enter your Card details.</h1>
                 <form onSubmit={e=>handleSubmit(e)} className="flex flex-col gap-5">
@@ -41,8 +47,8 @@ const Account = () =>{
                         <input onChange={(e)=>setData({...data,pin:e.target.value})} id="pin" className="px-3 py-1 outline-none bg-transparent rounded-md border-2 border-secondary" type="password" placeholder="****"/>
                     </div>
                     <div className="flex justify-between">
-                        <button className="px-5 py-2 w-1/3 rounded-md bg-secondary text-primary border-2 border-secondary">Verify</button>
-                        <button className="px-5 py-2 w-1/3 rounded-md bg-primary border-2 border-secondary">Reset</button>
+                        <button type="submit" className="px-5 py-2 w-1/3 rounded-md bg-secondary text-primary border-2 border-secondary">Verify</button>
+                        <button type="reset" className="px-5 py-2 w-1/3 rounded-md bg-primary border-2 border-secondary">Reset</button>
                     </div>
                 </form>
             </div>

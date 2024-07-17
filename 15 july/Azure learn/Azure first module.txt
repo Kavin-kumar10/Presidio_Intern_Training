@@ -1,0 +1,11 @@
+vnkavin - network
+vnkavin-Firewall - firewall
+vmkavin - virtual machine
+vmKey 
+vmkavin-ip - public ip
+vnkavin-Bastion - bastion
+
+
+source -> my ip
+destination -> firewall public ip
+translated to -> virtual machine private ip 
