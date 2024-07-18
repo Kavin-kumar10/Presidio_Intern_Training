@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import './App.css';
 import {WORDS,getRandomWord} from './Components/answerword'
-import Keyboard from './Components/Keyboard';
 
 function App() {
   const [data,setData] = useState(Array(25).fill(null))
   const [resultcolor,setResultColor] = useState(Array(25).fill('brown'))
-  const [correctanswer,setCorrectanswer] = useState(getRandomWord(WORDS));
+  const [correctanswer,] = useState(getRandomWord(WORDS));
   const [guessword,setGuessword] = useState('');
   const[ind,setInd] = useState(0);
   const handleSubmit = () =>{
@@ -19,7 +18,7 @@ function App() {
     let temparr = [...data];
     var tempColors = [...resultcolor]
     for (let index = 0; index < 5; index++) { 
-      if(guessword[index].toUpperCase() == correctanswer[index]){
+      if(guessword[index].toUpperCase() === correctanswer[index]){
         console.log(guessword[index].toUpperCase() + " "+ correctanswer[index]);
         tempColors[ind+index] = 'green';
       }
@@ -33,7 +32,7 @@ function App() {
     setResultColor(tempColors);
     setData(temparr);
     setTimeout(()=>{
-      if(guessword.toUpperCase() == correctanswer){
+      if(guessword.toUpperCase() === correctanswer){
         alert("you won");
         window.location.reload();
       } 
